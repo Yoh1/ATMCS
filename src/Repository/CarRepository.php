@@ -9,6 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\PaginatorInterface;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use ProxyManager\Stub\EmptyClassStub;
 
 /**
  * @method Car|null find($id, $lockMode = null, $lockVersion = null)
@@ -74,6 +75,18 @@ class CarRepository extends ServiceEntityRepository
                         ->andWhere('c.brand LIKE :q')
                         ->orWhere('c.model LIKE :q')
                         ->setParameter('q', "%{$data->q}%");
+        }
+
+        if(!empty($data->min)){
+            $query = $query
+                        ->andWhere('c.price >= :min')
+                        ->setParameter('min', $data->min);
+        }
+
+        if(!empty($data->max)){
+            $query = $query
+                        ->andWhere('c.price <= :max')
+                        ->setParameter('max', $data->max);
         }
 
 

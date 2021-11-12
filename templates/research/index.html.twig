@@ -4,13 +4,20 @@
 
 {% block body %}
 
-    {% include 'research/_filter.html.twig' with {form: form} only %}
 
-    <div class="container">
-        <div>
-            {% for car in cars %}
-                {% include 'research/_card.html.twig' with {car: car} only %}
-            {% endfor %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 sticky-top mt-3">
+                    {% include 'research/_filter.html.twig' with {form: form} only %}
+            </div>
+
+        
+            <div class="col-md-9">
+                {% for car in cars %}
+                    {% include 'research/_card.html.twig' with {car: car} only %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 
