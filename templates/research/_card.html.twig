@@ -1,6 +1,7 @@
 <div class="card m-3">
     <div class="card-body">
-        <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
+        <h4 class="card-title">{{ car.brand }} {{ car.model }}</h5>
         <p class="card-text">{{ car.year }}</p>
+        <h5 class="card-title text-primary"> {{ car.price | number_format (0, ',', ' ')}} €</h5>
     </div>
 </div>
