@@ -2,7 +2,7 @@
 
     {{ form_row(form.q) }}
 
-    <h4 class>Prix</h4>
+    <h4>Prix</h4>
     <div class="row">
         <div class="col-md-6">
             {{ form_row(form.min) }}
@@ -12,4 +12,20 @@
         </div>
     </div>
 
+    <h4>Marques</h4>
+    {% for child in form.brand %}        
+        {% if child.vars.value != '' %}
+            {{ form_row(child, {'label': child.vars.value }) }}
+        {% else %}
+            {{ form_row(child, {'label': 'Toutes les marques' }) }}
+        {% endif %}
+    {% endfor %}
+
+
+
 {{ form_end(form) }}
+
+
+<a href="{{ path('research')}}">
+    <button class="btn btn-lg btn-info fw-bold text-white">Remettre à zéro</button>
+</a>

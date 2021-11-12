@@ -89,6 +89,12 @@ class CarRepository extends ServiceEntityRepository
                         ->setParameter('max', $data->max);
         }
 
+        if(!empty($data->brand)){
+            $query = $query
+                        ->andWhere('c.brand like :brand')
+                        ->setParameter('brand', $data->brand);
+        }
+
 
         $query = $query->getQuery();
         //return $query->getQuery()->getResult();
@@ -99,4 +105,21 @@ class CarRepository extends ServiceEntityRepository
             15
         );
     }
+
+
+    public function findBrands(): array {
+
+        $query = $this
+                ->createQueryBuilder('c')
+                ->select('c.brand')
+                ->distinct();
+        
+        $query = $query->getQuery()->getScalarResult();
+
+        return array_column($query, "brand");
+    }
+
+    /* Prochaine étape une requête
+    SELECT brand, count(brand) FROM `car` GROUP BY brand
+    pour récuper le nombre de marques en même temps */
 }

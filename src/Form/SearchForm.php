@@ -3,17 +3,25 @@
 namespace App\Form;
 
 use App\Data\SearchData;
+use App\Repository\CarRepository;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class SearchForm extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             ->add('q', TextType::class, [
                 'label' => FALSE,
@@ -35,7 +43,7 @@ class SearchForm extends AbstractType {
                 'label' => FALSE,
                 'required' => FALSE,
                 'attr' => [
-                    'placeholder' => "Prix maxium",
+                    'placeholder' => "Prix maximum",
                     'class' => "p-2"
                 ]
             ])

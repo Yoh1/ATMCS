@@ -12,6 +12,11 @@ class SearchData {
 
 
     /**
+    *  @var string
+    */
+    public $brand = '';
+
+    /**
      * @var null|integer
      */
     public $max;

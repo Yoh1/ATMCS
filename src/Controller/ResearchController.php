@@ -6,9 +6,14 @@ use App\Data\SearchData;
 use App\Form\SearchForm;
 use App\Repository\CarRepository;
 use DateTimeInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\HttpFoundation\Request;
 
 class ResearchController extends AbstractController
@@ -22,10 +27,21 @@ class ResearchController extends AbstractController
         $data = new SearchData();
         $data->page = $request->get('page', 1);
 
-        $form = $this->createForm(SearchForm::class, $data);
+        $data->brands = $repository->findBrands();
+
+        $form = $this->createForm(SearchForm::class, $data)
+                    ->add('brand', ChoiceType::class, [
+                        'required' => FALSE,
+                        'choices' => $data->brands,
+                        'choice_label' => FALSE,
+                        'expanded' => TRUE,
+                        'label' => FALSE
+                    ]);
         $form->handleRequest($request);
 
         $cars = $repository->findSearch($data);
+
+        
 
         return $this->render('research/index.html.twig', [
             'cars' => $cars,
