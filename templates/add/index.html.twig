@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+
+{% form_theme formAnnonce 'bootstrap_4_layout.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ '../css/form_annonce.css' }} ">
+{% endblock %}
+
+{% block title %}Hello LogInController!
+{% endblock %}
+
+{% block body %}
+
+	<link rel="stylesheet" href="{{ '../CSS/style2.css' }}">
+
+	<div class="formanno">
+
+		<h1>Formulaire d'ajout d'annonce</h1>
+
+		{{ form_start(formAnnonce) }}
+
+		{{ form_row(formAnnonce.marque, {'attr': {'placeholder': "Marque de la voiture"}}) }}
+
+		{{ form_row(formAnnonce.modele, {'attr': {'placeholder': "Modèle de la voiture"}}) }}
+
+		{{ form_row(formAnnonce.annee, {'attr': {'placeholder': "Année"}}) }}
+
+		{{ form_row(formAnnonce.kilometrage, {'attr': {'placeholder': "Nombre de kilomètrage"}}) }}
+
+		{{ form_row(formAnnonce.prix, {'attr': {'placeholder': "Prix de la voiture"}}) }}
+
+		{{ form_row(formAnnonce.localisation, {'attr': {'placeholder': "Localisation de la voiture"}}) }}
+
+		{{ form_row(formAnnonce.date, {'attr': {'placeholder': "Date de mise en circulation"}}) }}
+
+		{{ form_row(formAnnonce.image, {'attr': {'placeholder': "URL de l'image"}}) }}
+
+		<input type="file">
+
+		<button type="submit" id="sub" class="btn btn-success">Ajouter une annonce</button>
+
+		{{ form_end(formAnnonce) }}
+
+	</div>
+
+
+{% endblock %}

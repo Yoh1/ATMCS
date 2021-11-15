@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<link rel="stylesheet" href="{{ '../css/annonce.css' }}">
+
+	<section id="article" class="row">
+
+		<div id="div1" class="col-lg-7"><img src="{{ '../img/automobile-1838782_1920.jpg' }}" alt=""></div>
+
+		<article class="col-lg-5">
+			<div id="div2" class="row">
+				<h2 class="col-6 primary">{{annonces.marque}}</h2>
+				{# <p>De modèle :</p> #}
+				<h3 class="col-6">{{annonces.modele}}</h3>
+				<h3 class="col-6">Prix :</h3>
+				<h3 class="col-6">{{annonces.prix}}
+					€</h3>
+				<h3 class="col-6">Mise en circulation :</h3>
+				<h3 class="col-6">En
+					{{annonces.annee}}</h3>
+				{# <P>Son kilomètrage est de :</p> #}
+				<h3 class="col-6">Au compteur :</h3>
+				<h3 class="col-6">{{annonces.kilometrage | number_format(0, ",", " " )}}</h3>
+				{# <p>Son prix est de :</p> #}
+				<h3 class="col-6">Localisé à :</h3>
+				<h3 class="col-6">{{annonces.localisation}}</h3>
+				<h3 class="col-6">Date de mise en circulation :</h3>
+				<h3 class="col-6">{{annonces.date | date('d/m/Y')}}</h3>
+				{# <div class="ig"><img src="{{annonces.image}}" alt=""></div> #}
+			</div>
+		</artcle>
+
+	</section>
+
+{% endblock %}

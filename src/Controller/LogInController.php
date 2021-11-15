@@ -10,8 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ObjectManager;
 
 
-// use App\Entity\Annonce;
-use App\Entity\index;
+use App\Entity\Annonce;
+// use App\Entity\index;
 
 
 class LogInController extends AbstractController
@@ -46,10 +46,6 @@ class LogInController extends AbstractController
     //         $manager->flush();
 
     //         return $this->redirectToRoute('blog_show', ['id' => $annonce->getId()]);
-
-
-
-
 
 
 

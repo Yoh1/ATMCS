@@ -1,0 +1,28 @@
+
+/* #ig{
+    width: 700px;
+}
+
+#ig > img{
+    width: 100%;
+} */
+
+/* .article{
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.marque{
+    display: inline;
+} */
+
+
+
+/* #div1{
+    width: 700px;
+} */
+#div1 > img{
+    width: 100%;
+}

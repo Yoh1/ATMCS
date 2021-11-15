@@ -1,6 +1,6 @@
 
 .formanno{
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
 }
 
@@ -8,3 +8,8 @@ h1{
     color: #00142f;
     text-align: center;
 }
+
+#sub{
+    margin-top: 15px;
+}
+
