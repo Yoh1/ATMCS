@@ -1,0 +1,24 @@
+img{
+    display: block;
+    width: 580px; 
+    height: 245px;
+   object-fit: cover;
+}
+
+.icons{
+
+    font-size: 60px;
+}
+
+
+@media screen and (min-width:1024px) {
+
+    img{
+
+        width: 80%;
+    }
+    
+}
+
+
+
