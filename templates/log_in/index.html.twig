@@ -1,20 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LogInController!{% endblock %}
+{% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
+
+
+{% block title %}Hello LogInController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<link rel="stylesheet" href="{{ '../CSS/style2.css' }}">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/src/Controller/LogInController.php'|file_link(0) }}">src/Controller/LogInController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/templates/log_in/index.html.twig'|file_link(0) }}">templates/log_in/index.html.twig</a></code></li>
-    </ul>
-</div>
+	<div class="formanno">
+		<h1>Formulaire d'ajout d'annonce</h1>
+
+		{{ form_start(formAnnonce) }}
+
+		{{ form_row(formAnnonce.marque, {'attr': {'placeholder': "Marque de la voiture"}}) }}
+
+		{{ form_row(formAnnonce.modele, {'attr': {'placeholder': "Modèle de la voiture"}}) }}
+
+		{{ form_row(formAnnonce.anne, {'attr': {'placeholder': "Année"}}) }}
+
+		{{ form_row(formAnnonce.kilometrage, {'attr': {'placeholder': "Nombre de kilomètrage"}}) }}
+
+		{{ form_row(formAnnonce.prix, {'attr': {'placeholder': "Prix de la voiture"}}) }}
+
+		{{ form_row(formAnnonce.localisation, {'attr': {'placeholder': "Localisation de la voiture"}}) }}
+
+		{{ form_row(formAnnonce.date, {'attr': {'placeholder': "Date de mise en circulation"}}) }}
+
+		{{ form_row(formAnnonce.image, {'attr': {'placeholder': "URL de l'image"}}) }}
+
+
+		<button type="submit" class="btn btn-success">Ajouter une annonce</button>
+
+		{{ form_end(formAnnonce) }}
+
+	</div>
+
+
 {% endblock %}

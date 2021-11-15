@@ -1,0 +1,131 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(231, 227, 227);
+}
+.container{
+    background-color: #fff;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+#filtre{
+    margin: 40px 0px 40px;
+}
+h3{
+    color: #00142f;
+}
+a{
+    text-decoration: none;
+    list-style-type: none;
+    color: black;
+}
+
+
+
+/* mettre une boite à droite et l'autre à gauche */
+#conte, #conte1{
+    display: flex;
+}
+
+#conte > a, #conte1 > a{
+    text-align: center;
+    color: #fff;
+    border-radius: 3px;
+    padding: 10px 10px;
+    background-color: #00142f;
+    margin: 1px;
+}
+
+#conte > a:hover, #conte1 > a:hover{
+    color: #039be5;
+}
+
+/* la taille des ongles filtre */
+/* #conte > a{
+    width: 20%;
+}
+#conte1 > a{
+    width: 25%;
+} */
+
+.vali > a{
+    width: 100px;
+    text-align: center;
+    border-radius: 3px;
+    padding: 10px;
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.vali > a:hover{
+    color: #00142f;
+}
+
+.vali{
+    margin-top: 4px;
+    display: flex;
+    justify-content: end;
+}
+  
+
+
+
+
+.slide{
+    margin: 0px auto;
+    width: 90%;
+}
+
+
+
+
+
+
+
+footer{
+    margin-top: 80px;
+}
+
+#fot{
+    background-color: #00142f;
+    padding: 50px 25px 40px 25px;
+}
+
+footer > .row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+#fot > div > a{
+    color: white;
+    display: block;
+    margin-bottom: 12px;
+}
+
+#fot-a{
+    background-color: black;
+    color: #fff;
+    padding: 20px 10px 10px 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

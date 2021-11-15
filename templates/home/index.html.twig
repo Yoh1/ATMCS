@@ -1,20 +1,92 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+	<div class="container">
+		<div id="filtre" class="row">
+			<div class="col-lg-6">
+				<h3>Top Marques</h3>
+				<div class="row">
+					<div id="conte">
+						<a class="col" href="#">Audi</a>
+						<a class="col" href="#">BMW</a>
+						<a class="col" href="#">Citroen</a>
+						<a class="col" href="#">Peugeot</a>
+						<a class="col" href="#">Renault</a>
+					</div>
+					<div id="conte">
+						<a class="col" href="#">Fiat</a>
+						<a class="col" href="#">Ford</a>
+						<a class="col" href="#">Mercedes</a>
+						<a class="col" href="#">Toyota</a>
+						<a class="col" href="#">VW</a>
+					</div>
+					<div id="conte">
+						<a class="col" href="#">Mini</a>
+						<a class="col" href="#">Nissan</a>
+						<a class="col" href="#">Opel</a>
+						<a class="col" href="#">Abarth</a>
+						<a class="col" href="#">Jaguar</a>
+					</div>
+					<div class="vali">
+						<a href="#">Charger</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<h3>Top Modèles</h3>
+				<div class="row">
+					<div id="conte1">
+						<a class="col" href="#">2008</a>
+						<a class="col" href="#">208</a>
+						<a class="col" href="#">3008</a>
+						<a class="col" href="#">308</a>
+					</div>
+					<div id="conte1">
+						<a class="col" href="#">500</a>
+						<a class="col" href="#">Cl</a>
+						<a class="col" href="#">Captur</a>
+						<a class="col" href="#">Clio</a>
+					</div>
+					<div id="conte1">
+						<a class="col" href="#">Golf</a>
+						<a class="col" href="#">Kadjar</a>
+						<a class="col" href="#">Megan</a>
+						<a class="col" href="#">Polo</a>
+					</div>
+					<div class="vali">
+						<a href="#">Charger</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			</div>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="{{ '../img/automobile-1838782_1920.jpg' }}" class="d-block w-100" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="{{ '../img/car-1149997_1920.jpg' }}" class="d-block w-100" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="{{ '../img/auto-2179220_1920.jpg' }}" class="d-block w-100" alt="...">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+	</div>
 {% endblock %}
