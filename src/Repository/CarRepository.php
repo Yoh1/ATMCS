@@ -77,22 +77,64 @@ class CarRepository extends ServiceEntityRepository
                         ->setParameter('q', "%{$data->q}%");
         }
 
-        if(!empty($data->min)){
+        if(!empty($data->minPrice)){
             $query = $query
-                        ->andWhere('c.price >= :min')
-                        ->setParameter('min', $data->min);
+                        ->andWhere('c.price >= :minPrice')
+                        ->setParameter('minPrice', $data->minPrice);
         }
 
-        if(!empty($data->max)){
+        if(!empty($data->maxPrice)){
             $query = $query
-                        ->andWhere('c.price <= :max')
-                        ->setParameter('max', $data->max);
+                        ->andWhere('c.price <= :maxPrice')
+                        ->setParameter('maxPrice', $data->maxPrice);
+        }
+        
+        if(!empty($data->minYear)){
+            $query = $query
+                        ->andWhere('c.year >= :minYear')
+                        ->setParameter('minYear', $data->minYear);
+        }
+        
+        if(!empty($data->maxYear)){
+            $query = $query
+                        ->andWhere('c.year <= :maxYear')
+                        ->setParameter('maxYear', $data->maxYear);
+        }
+
+        if(!empty($data->minMile)){
+            $query = $query
+                        ->andWhere('c.mileage >= :minMile')
+                        ->setParameter('minMile', $data->minMile);
+        }
+        
+        if(!empty($data->maxMile)){
+            $query = $query
+                        ->andWhere('c.mileage <= :maxMile')
+                        ->setParameter('maxMile', $data->maxMile);
         }
 
         if(!empty($data->brand)){
             $query = $query
                         ->andWhere('c.brand like :brand')
                         ->setParameter('brand', $data->brand);
+        }
+
+        if(!empty($data->model)){
+            $query = $query
+                        ->andWhere('c.model like :model')
+                        ->setParameter('model', $data->model);
+        }
+
+        if(!empty($data->location)){
+            $query = $query
+                        ->andWhere('c.location like :location')
+                        ->setParameter('location', $data->location);
+        }
+
+        if(!empty($data->engine)){
+            $query = $query
+                        ->andWhere('c.engine like :engine')
+                        ->setParameter('engine', $data->engine);
         }
 
 
@@ -112,7 +154,8 @@ class CarRepository extends ServiceEntityRepository
         $query = $this
                 ->createQueryBuilder('c')
                 ->select('c.brand')
-                ->distinct();
+                ->distinct()
+                ->orderBy('c.brand', 'ASC');
         
         $query = $query->getQuery()->getScalarResult();
 
@@ -122,4 +165,44 @@ class CarRepository extends ServiceEntityRepository
     /* Prochaine étape une requête
     SELECT brand, count(brand) FROM `car` GROUP BY brand
     pour récuper le nombre de marques en même temps */
+
+    public function findModels(): array {
+
+        $query = $this
+                ->createQueryBuilder('c')
+                ->select('c.model')
+                ->distinct()
+                ->orderBy('c.model', 'ASC');
+        
+        $query = $query->getQuery()->getScalarResult();
+
+        return array_column($query, "model");
+    }
+
+    public function findLocations(): array {
+
+        $query = $this
+                ->createQueryBuilder('c')
+                ->select('c.location')
+                ->distinct()
+                ->orderBy('c.location', 'ASC');
+        
+        $query = $query->getQuery()->getScalarResult();
+
+        return array_column($query, "location");
+    }
+
+    public function findEngines(): array {
+
+        $query = $this
+                ->createQueryBuilder('c')
+                ->select('c.engine')
+                ->distinct()
+                ->orderBy('c.engine', 'ASC');
+        
+        $query = $query->getQuery()->getScalarResult();
+
+        return array_column($query, "engine");
+    }
+
 }

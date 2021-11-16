@@ -28,11 +28,35 @@ class ResearchController extends AbstractController
         $data->page = $request->get('page', 1);
 
         $data->brands = $repository->findBrands();
+        $data->models = $repository->findModels();
+        $data->locations = $repository->findLocations();
+        $data->engines = $repository->findEngines();
 
         $form = $this->createForm(SearchForm::class, $data)
                     ->add('brand', ChoiceType::class, [
                         'required' => FALSE,
                         'choices' => $data->brands,
+                        'choice_label' => FALSE,
+                        'expanded' => TRUE,
+                        'label' => FALSE
+                    ])
+                    ->add('model', ChoiceType::class, [
+                        'required' => FALSE,
+                        'choices' => $data->models,
+                        'choice_label' => FALSE,
+                        'expanded' => TRUE,
+                        'label' => FALSE
+                    ])
+                    ->add('location', ChoiceType::class, [
+                        'required' => FALSE,
+                        'choices' => $data->locations,
+                        'choice_label' => FALSE,
+                        'expanded' => TRUE,
+                        'label' => FALSE
+                    ])
+                    ->add('engine', ChoiceType::class, [
+                        'required' => FALSE,
+                        'choices' => $data->engines,
                         'choice_label' => FALSE,
                         'expanded' => TRUE,
                         'label' => FALSE

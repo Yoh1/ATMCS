@@ -31,7 +31,7 @@ class SearchForm extends AbstractType {
                     'class' => "p-2"
                 ]
             ])
-            ->add('min', NumberType::class, [
+            ->add('minPrice', NumberType::class, [
                 'label' => FALSE,
                 'required' => FALSE,
                 'attr' => [
@@ -39,7 +39,7 @@ class SearchForm extends AbstractType {
                     'class' => "p-2"
                 ]
             ])
-            ->add('max', NumberType::class, [
+            ->add('maxPrice', NumberType::class, [
                 'label' => FALSE,
                 'required' => FALSE,
                 'attr' => [
@@ -47,11 +47,43 @@ class SearchForm extends AbstractType {
                     'class' => "p-2"
                 ]
             ])
+            ->add('minYear', NumberType::class, [
+                'label' => FALSE,
+                'required' => FALSE,
+                'attr' => [
+                    'placeholder' => "Entre l'année...",
+                    'class' => "p-2"
+                ]
+            ])
+            ->add('maxYear', NumberType::class, [
+                'label' => FALSE,
+                'required' => FALSE,
+                'attr' => [
+                    'placeholder' => "...et l'année",
+                    'class' => "p-2"
+                ]
+            ])
+            ->add('minMile', NumberType::class, [
+                'label' => FALSE,
+                'required' => FALSE,
+                'attr' => [
+                    'placeholder' => "Kilométrage minimum",
+                    'class' => "p-2"
+                ]
+            ])
+            ->add('maxMile', NumberType::class, [
+                'label' => FALSE,
+                'required' => FALSE,
+                'attr' => [
+                    'placeholder' => "Kilométrage maximum",
+                    'class' => "p-2"
+                ]
+            ])
             ->add('filtrer', SubmitType::class, [
                 'attr' => [
                     'class' => "btn btn-lg btn-secondary fw-bold",
                 ]
-                ]);
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver){

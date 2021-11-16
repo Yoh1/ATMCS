@@ -2,6 +2,7 @@
     <div class="card-body">
         <h4 class="card-title">{{ car.brand }} {{ car.model }}</h5>
         <p class="card-text">{{ car.year }}</p>
-        <h5 class="card-title text-primary"> {{ car.price | number_format (0, ',', ' ')}} €</h5>
+        <p class="card-text fw-bold text-muted">{{ car.mileage | number_format (0, ',', ' ')}} km <span class="text-dark text-uppercase">- {{ car.engine }}</span> </p>
+        <h5 class="card-title text-primary"> {{ car.price | number_format (0, ',', ' ')}} € <span class="text-dark">- {{ car.location }}</span> </h5>
     </div>
 </div>

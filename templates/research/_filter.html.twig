@@ -5,10 +5,10 @@
     <h4>Prix</h4>
     <div class="row">
         <div class="col-md-6">
-            {{ form_row(form.min) }}
+            {{ form_row(form.minPrice) }}
         </div>
         <div class="col-md-6">
-            {{ form_row(form.max) }}
+            {{ form_row(form.maxPrice) }}
         </div>
     </div>
 
@@ -20,6 +20,54 @@
             {{ form_row(child, {'label': 'Toutes les marques' }) }}
         {% endif %}
     {% endfor %}
+
+    <h4>Année</h4>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.minYear) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.maxYear) }}
+        </div>
+    </div>
+
+    <h4>Modèles</h4>
+    {% for child in form.model %}        
+        {% if child.vars.value != '' %}
+            {{ form_row(child, {'label': child.vars.value }) }}
+        {% else %}
+            {{ form_row(child, {'label': 'Tous les modèles' }) }}
+        {% endif %}
+    {% endfor %}
+
+    <h4>Kilométrage</h4>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.minMile) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.maxMile) }}
+        </div>
+    </div>
+
+    <h4>Localisation</h4>
+    {% for child in form.location %}        
+        {% if child.vars.value != '' %}
+            {{ form_row(child, {'label': child.vars.value }) }}
+        {% else %}
+            {{ form_row(child, {'label': 'Toutes les localisations' }) }}
+        {% endif %}
+    {% endfor %}
+
+    <h4>Motorisation</h4>
+    {% for child in form.engine %}        
+        {% if child.vars.value != '' %}
+            <span class="text-uppercase">{{ form_row(child, {'label': child.vars.value }) }}</span>
+        {% else %}
+            {{ form_row(child, {'label': 'Toutes les motorisations' }) }}
+        {% endif %}
+    {% endfor %}
+
 
 
 
