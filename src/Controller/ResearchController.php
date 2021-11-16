@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class ResearchController extends AbstractController
@@ -65,6 +66,15 @@ class ResearchController extends AbstractController
                 'models' => $data->models,
                 'locations' => $data->locations,
                 'engines' => $data->engines
+            ]);
+        }
+
+        if($request->get('ajax')) {
+            return new JsonResponse([
+                'content' => $this->renderView('research/_cars.html.twig', ['cars' => $cars]),
+                'sorting' => $this->renderView('research/_sorting.html.twig', ['cars' => $cars]),
+                'pagination' => $this->renderView('research/_pagination.html.twig', ['cars' => $cars]),
+                //'form' => $this->renderView('research/_filter.html.twig', ['form' => $form->createView()])
             ]);
         }
 

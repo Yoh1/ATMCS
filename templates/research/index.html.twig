@@ -6,7 +6,7 @@
 
 
 
-    <div class="container-fluid">
+    <div class="container-fluid js-filter">
         <div class="row">
             <div class="col-md-3 sticky-top mt-3">
                 {% include 'research/_filter.html.twig' with {form: form, minPrice: minPrice, maxPrice: maxPrice} only %}
@@ -14,21 +14,20 @@
 
         
             <div class="col-md-9">
-                <div class="d-flex justify-content-end mb-2">
-                    {{ knp_pagination_sortable(cars, 'Prix', 'c.price') }}
-                    {{ knp_pagination_sortable(cars, 'Année', 'c.year') }}
-                    {{ knp_pagination_sortable(cars, 'Kilométrage', 'c.mileage') }}
+                <div class="d-flex justify-content-end mb-2 js-filter-sorting">
+                    {% include 'research/_sorting.html.twig' with {cars: cars} only %}
                 </div>
-                {% for car in cars %}
-                    {% include 'research/_card.html.twig' with {car: car} only %}
-                {% endfor %}
+                <div class="js-filter-content">
+                    {% include 'research/_cars.html.twig' with {cars: cars} only %}
+                </div>
             </div>
+        </div>
+         <div class="js-filter-pagination">
+            {% include 'research/_pagination.html.twig' with {cars: cars} only %}
         </div>
     </div>
 
-    <div>
-        {{ knp_pagination_render(cars) }}    
-    </div>
+
 
 
 {% endblock %}

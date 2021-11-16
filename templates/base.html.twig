@@ -19,6 +19,73 @@
         {{ encore_entry_script_tags('app') | replace({'src=': 'defer src='}) | raw }}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+				<div class="container-fluid">
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a href="index2.php"><img src="{{ '../img/logo11.png' }}" alt=""></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="#">Occasion</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="#">Marques</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="#">Modèles</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="#">Années</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="#">Kilometrage</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="#">Prix</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="#">Location</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="#">Annonce</a>
+							</li>
+						</ul>
+						<form class="d-flex">
+							<input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+							<button class="btn btn-outline-success" type="submit">Recherche</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+			{% block body %}{% endblock %}
+			<footer>
+				<div id="fot" class="row text-center">
+					<div id="fot-un" class="col-lg-4">
+						<a href="">Qui somme nous</a>
+						<a href="">Condition générale</a>
+						<a href="">Mention légale</a>
+					</div>
+					<div id="fot-deux" class="col-lg-4">
+						<a href="">Charte rédactionnelle</a>
+						<a href="">Charte cookies</a>
+						<a href="">Devenir annonceur</a>
+					</div>
+					<div id="fot-trois" class="col-lg-4">
+						<a href="">Nous contacter</a>
+					</div>
+				</div>
+				<div id="fot-a" class="row text-xs-center text-sm-center text-md-center">
+					<p class="col-lg-6 text-lg-start">&copy;2021 Colombbus</p>
+					<div id="p1" class="col-lg-6 text-lg-end"></div>
+				</div>
+			</footer>
+		</div>
+
     </body>
 </html>
