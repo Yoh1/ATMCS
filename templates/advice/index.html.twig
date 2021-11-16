@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdviceController!
+{% block title %}Conseils
 {% endblock %}
 
 {% block body %}
@@ -29,15 +29,15 @@
 				</div>
 			</div>
 			<div class="col-6 mt-1">
-				<a href="https://www.lacentrale.fr/images/lc_fr/check-list_acheteur.pdf"  target="_blank">
+				<a href="https://www.lacentrale.fr/images/lc_fr/check-list_acheteur.pdf" target="_blank">
 					<button type="button" class="btn btn-primary">la check-list de visite</button>
 				</a>
 			</div>
-			
+
 			<div class="col-6 mt-1">
-					<a href="https://immatriculation.ants.gouv.fr/" target="_blank"> 
-						<button type="button" class="btn btn-primary">Le certificat de d'immatriculation</button>
-					</a>
+				<a href="https://immatriculation.ants.gouv.fr/" target="_blank">
+					<button type="button" class="btn btn-primary">Le certificat de d'immatriculation</button>
+				</a>
 			</div>
 		</div>
 		<div class="row">
@@ -47,45 +47,45 @@
 					<div class="card-body">
 						<h5 class="card-title">Vendeurs : La vente de votre véhicule en période Coronavirus</h5>
 						<p class="card-text">Attentifs à votre sécurité, il nous semble indispensable de vous conseiller sur les bonnes pratiques à adopter pour la vente de votre véhicule dans le contexte actuel, notamment lors de vos rencontres avec de potentiels acquéreurs.</p>
-						<a href="#" class="btn btn-primary">Déposer une annonce</a>
+						<a href="{{ path('vente_voiture') }}" class="btn btn-primary">En savoir plus</a>
 					</div>
 				</div>
 
 			</div>
 			<div class=" col-12  col-lg-6 mb-3 mt-2">
 				<div class="card" style="width: 80%;">
-					<img src="{{'img/sell.jpg'}}" class="card-img-top" alt="clio-2-rouge">
+					<img src="{{'img/sell.jpg'}}" class="card-img-top" alt="vendeur">
 					<div class="card-body">
 						<h5 class="card-title">Acheteurs : L’achat de votre véhicule en période Coronavirus</h5>
 						<p class="card-text">Attentifs à votre sécurité, il nous semble indispensable de vous conseiller sur les bonnes pratiques à adopter pour l’achat de votre véhicule dans le contexte actuel, notamment lors de vos rencontres avec les vendeurs.</p>
-						<a href="#" class="btn btn-primary">Déposer une annonce</a>
+						<a href="{{ path('achat_voiture') }}" class="btn btn-primary">En savoir plus</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-12  col-lg-6 mb-3">
 				<div class="card" style="width: 80%;">
-					<img src="{{'img/money.jpg'}}" class="card-img-top" alt="clio-2-rouge">
+					<img src="{{'img/money.jpg'}}" class="card-img-top" alt="billet">
 					<div class="card-body">
 						<h5 class="card-title">Bien vendre sa voiture étape par étape</h5>
 						<p class="card-text">Définir le prix juste, préparer votre voiture, les visites, les formalités administratives.
-																												Découvrez comment vendre votre véhicule rapidement et dans les meilleures conditions.
-																												Documents utiles pour le vendeur</p>
-						<a href="#" class="btn btn-primary">Déposer une annonce</a>
+																																			Découvrez comment vendre votre véhicule rapidement et dans les meilleures conditions.
+																																			Documents utiles pour le vendeur</p>
+						<a href=" {{ path('vendre_sa_voiture') }}" class="btn btn-primary">En savoir plus</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-12  col-lg-6 mb-3">
 				<div class="card" style="width: 80%;">
-					<img src="{{'img/etape.jpg'}}" class="card-img-top" alt="clio-2-rouge">
+					<img src="{{'img/etape.jpg'}}" class="card-img-top" alt="etape">
 					<div class="card-body">
 						<h5 class="card-title">Bien acheter sa voiture étape par étape</h5>
 						<p class="card-text">Définir le prix juste, préparer votre voiture, les visites, les formalités administratives. Découvrez comment vendre votre véhicule rapidement et dans les meilleures conditions.</p>
-						<a href="#" class="btn btn-primary">Déposer une annonce</a>
+						<a href="{{ path('bien_acheter') }} " class="btn btn-primary">En savoir plus</a>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 
 
