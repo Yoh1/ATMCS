@@ -32,13 +32,15 @@
     </div>
 
     <h4>Modèles</h4>
-    {% for child in form.model %}        
-        {% if child.vars.value != '' %}
-            {{ form_row(child, {'label': child.vars.value }) }}
-        {% else %}
-            {{ form_row(child, {'label': 'Tous les modèles' }) }}
-        {% endif %}
-    {% endfor %}
+    <div class="overflow-auto" style="height: 200px">
+        {% for child in form.model %}        
+            {% if child.vars.value != '' %}
+                {{ form_row(child, {'label': child.vars.value }) }}
+            {% else %}
+                {{ form_row(child, {'label': 'Tous les modèles' }) }}
+            {% endif %}
+        {% endfor %}
+    </div>
 
     <h4>Kilométrage</h4>
     <div class="row">
