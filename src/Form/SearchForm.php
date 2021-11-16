@@ -22,6 +22,11 @@ class SearchForm extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
+        $this->brands = $options['brands'];
+        $this->models = $options['models'];
+        $this->locations = $options['locations'];
+        $this->engines = $options['engines'];
+
         $builder
             ->add('q', TextType::class, [
                 'label' => FALSE,
@@ -30,6 +35,13 @@ class SearchForm extends AbstractType {
                     'placeholder' => "Rechercher une voiture",
                     'class' => "p-2"
                 ]
+            ])
+            ->add('brand', ChoiceType::class, [
+                'required' => FALSE,
+                'choices' => $this->brands,
+                'choice_label' => FALSE,
+                'expanded' => TRUE,
+                'label' => FALSE
             ])
             ->add('minPrice', NumberType::class, [
                 'label' => FALSE,
@@ -47,6 +59,13 @@ class SearchForm extends AbstractType {
                     'class' => "p-2"
                 ]
             ])
+            ->add('model', ChoiceType::class, [
+                'required' => FALSE,
+                'choices' => $this->models,
+                'choice_label' => FALSE,
+                'expanded' => TRUE,
+                'label' => FALSE
+            ])
             ->add('minYear', NumberType::class, [
                 'label' => FALSE,
                 'required' => FALSE,
@@ -62,6 +81,13 @@ class SearchForm extends AbstractType {
                     'placeholder' => "...et l'année",
                     'class' => "p-2"
                 ]
+            ])
+            ->add('location', ChoiceType::class, [
+                'required' => FALSE,
+                'choices' => $this->locations,
+                'choice_label' => FALSE,
+                'expanded' => TRUE,
+                'label' => FALSE
             ])
             ->add('minMile', NumberType::class, [
                 'label' => FALSE,
@@ -79,6 +105,13 @@ class SearchForm extends AbstractType {
                     'class' => "p-2"
                 ]
             ])
+            ->add('engine', ChoiceType::class, [
+                'required' => FALSE,
+                'choices' => $this->engines,
+                'choice_label' => FALSE,
+                'expanded' => TRUE,
+                'label' => FALSE
+            ])
             ->add('filtrer', SubmitType::class, [
                 'attr' => [
                     'class' => "btn btn-lg btn-secondary fw-bold",
@@ -91,6 +124,10 @@ class SearchForm extends AbstractType {
         $resolver->setDefaults([
             'data_class' => SearchData::class,
             'method' => 'GET',
+            'brands' => null,
+            'models' => null,
+            'locations' => null,
+            'engines' => null,
             'csrf_protection' => false
         ]);
     }

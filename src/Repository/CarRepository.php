@@ -80,10 +80,9 @@ class CarRepository extends ServiceEntityRepository
     }
 
 
-    public function findBrands(): array {
+    public function findBrands($data): array {
 
-        $query = $this
-                ->createQueryBuilder('c')
+        $query = $this->getSearchQuery($data)
                 ->select('c.brand')
                 ->distinct()
                 ->orderBy('c.brand', 'ASC');
@@ -97,10 +96,9 @@ class CarRepository extends ServiceEntityRepository
     SELECT brand, count(brand) FROM `car` GROUP BY brand
     pour récuper le nombre de marques en même temps */
 
-    public function findModels(): array {
+    public function findModels(SearchData $data): array {
 
-        $query = $this
-                ->createQueryBuilder('c')
+        $query = $this->getSearchQuery($data)
                 ->select('c.model')
                 ->distinct()
                 ->orderBy('c.model', 'ASC');
@@ -110,10 +108,9 @@ class CarRepository extends ServiceEntityRepository
         return array_column($query, "model");
     }
 
-    public function findLocations(): array {
+    public function findLocations(SearchData $data): array {
 
-        $query = $this
-                ->createQueryBuilder('c')
+        $query = $this->getSearchQuery($data)
                 ->select('c.location')
                 ->distinct()
                 ->orderBy('c.location', 'ASC');
@@ -123,10 +120,9 @@ class CarRepository extends ServiceEntityRepository
         return array_column($query, "location");
     }
 
-    public function findEngines(): array {
+    public function findEngines(SearchData $data): array {
 
-        $query = $this
-                ->createQueryBuilder('c')
+        $query = $this->getSearchQuery($data)
                 ->select('c.engine')
                 ->distinct()
                 ->orderBy('c.engine', 'ASC');

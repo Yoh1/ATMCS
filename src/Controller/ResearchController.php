@@ -28,50 +28,45 @@ class ResearchController extends AbstractController
         $data = new SearchData();
         $data->page = $request->get('page', 1);
 
-        $data->brands = $repository->findBrands();
-        $data->models = $repository->findModels();
-        $data->locations = $repository->findLocations();
-        $data->engines = $repository->findEngines();
+        $data->brands = $repository->findBrands($data);
+        $brands = $data->brands;
+        
+        $data->models = $repository->findModels($data);
+        $models = $data->models;
+
+        $data->locations = $repository->findLocations($data);
+        $locations = $data->locations;
+        
+        $data->engines = $repository->findEngines($data);
+        $engines = $data->engines;
 
         
+        $form = $this->createForm(SearchForm::class, $data, [
+            'brands' => $data->brands,
+            'models' => $data->models,
+            'locations' => $data->locations,
+            'engines' => $data->engines
+        ]);
 
-
-        $form = $this->createForm(SearchForm::class, $data)
-                    ->add('brand', ChoiceType::class, [
-                        'required' => FALSE,
-                        'choices' => $data->brands,
-                        'choice_label' => FALSE,
-                        'expanded' => TRUE,
-                        'label' => FALSE
-                    ])
-                    ->add('model', ChoiceType::class, [
-                        'required' => FALSE,
-                        'choices' => $data->models,
-                        'choice_label' => FALSE,
-                        'expanded' => TRUE,
-                        'label' => FALSE
-                    ])
-                    ->add('location', ChoiceType::class, [
-                        'required' => FALSE,
-                        'choices' => $data->locations,
-                        'choice_label' => FALSE,
-                        'expanded' => TRUE,
-                        'label' => FALSE
-                    ])
-                    ->add('engine', ChoiceType::class, [
-                        'required' => FALSE,
-                        'choices' => $data->engines,
-                        'choice_label' => FALSE,
-                        'expanded' => TRUE,
-                        'label' => FALSE
-                    ]);
-        $form->handleRequest($request);
-
-        
+        $form->handleRequest($request);        
 
         $cars = $repository->findSearch($data);
 
         [$minPrice, $maxPrice] = $repository->findMinMaxPrices($data);
+
+        $data->brands = $repository->findBrands($data);
+        $data->models = $repository->findModels($data);
+        $data->locations = $repository->findLocations($data);
+        $data->engines = $repository->findEngines($data);
+
+        if($data->brands !== $brands || $data->models !== $models || $data->locations !== $locations || $data->engines !== $engines) {
+            $form = $this->createForm(SearchForm::class, $data, [
+                'brands' => $data->brands,
+                'models' => $data->models,
+                'locations' => $data->locations,
+                'engines' => $data->engines
+            ]);
+        }
 
         
 
