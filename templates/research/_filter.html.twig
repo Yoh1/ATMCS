@@ -12,6 +12,9 @@
         </div>
     </div>
 
+    <div class="mb-3 ms-3" id="price-slider" data-min="{{ minPrice }}" data-max="{{ maxPrice }}"></div>
+
+
     <h4>Marques</h4>
     {% for child in form.brand %}        
         {% if child.vars.value != '' %}

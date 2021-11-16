@@ -9,11 +9,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 sticky-top mt-3">
-                {% include 'research/_filter.html.twig' with {form: form} only %}
+                {% include 'research/_filter.html.twig' with {form: form, minPrice: minPrice, maxPrice: maxPrice} only %}
             </div>
 
         
             <div class="col-md-9">
+                <div class="d-flex justify-content-end mb-2">
+                    {{ knp_pagination_sortable(cars, 'Prix', 'c.price') }}
+                    {{ knp_pagination_sortable(cars, 'Année', 'c.year') }}
+                    {{ knp_pagination_sortable(cars, 'Kilométrage', 'c.mileage') }}
+                </div>
                 {% for car in cars %}
                     {% include 'research/_card.html.twig' with {car: car} only %}
                 {% endfor %}

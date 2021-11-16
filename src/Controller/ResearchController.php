@@ -6,6 +6,7 @@ use App\Data\SearchData;
 use App\Form\SearchForm;
 use App\Repository\CarRepository;
 use DateTimeInterface;
+use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,6 +32,9 @@ class ResearchController extends AbstractController
         $data->models = $repository->findModels();
         $data->locations = $repository->findLocations();
         $data->engines = $repository->findEngines();
+
+        
+
 
         $form = $this->createForm(SearchForm::class, $data)
                     ->add('brand', ChoiceType::class, [
@@ -63,13 +67,19 @@ class ResearchController extends AbstractController
                     ]);
         $form->handleRequest($request);
 
+        
+
         $cars = $repository->findSearch($data);
+
+        [$minPrice, $maxPrice] = $repository->findMinMaxPrices($data);
 
         
 
         return $this->render('research/index.html.twig', [
             'cars' => $cars,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'minPrice' => $minPrice,
+            'maxPrice' => $maxPrice
         ]);
     }
 }
