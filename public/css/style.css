@@ -5,12 +5,21 @@
 }
 body{
     background-color: rgb(231, 227, 227);
+    font-family: 'Lato', sans-serif;
+
 }
+
+h1, h2, h3{
+    font-family: 'Quicksand', sans-serif;
+
+}
+
 .container{
     background-color: #fff;
     padding-right: 0px;
     padding-left: 0px;
 }
+
 #filtre{
     margin: 30px 0px 60px 0px;
 }
@@ -35,7 +44,7 @@ a{
     text-align: center;
     color: #fff;
     border-radius: 3px;
-    padding: 10px 10px;
+    padding: 10px;
     background-color: #0c2546;
     margin: 1px;
 }
@@ -71,8 +80,77 @@ a{
 .slide{
     margin: 0px auto;
     width: 90%;
-    margin-bottom: 80px;
+    /* margin-bottom: 60px; */
 }
+
+
+.tete{
+    text-align: center;
+    margin: 60px 20px 50px 20px;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    border-top: 1px solid rgb(214, 214, 214);
+    padding: 30px 20px 20px 20px;
+}
+
+.tete > h2{
+    color: #0c2546;
+    padding-bottom: 10px;
+}
+
+.span{
+    color: #0d6efd;
+}
+
+
+
+
+
+
+
+
+
+.coh2{
+    text-align: center;
+    font-weight: bold;
+    color: #0c2546;
+    margin-bottom: 40px;
+}
+
+#coeur{
+    margin-bottom: 60px;
+}
+
+figcaption{
+    border-radius: 3px;
+    box-shadow: 0px 1px 1px 1px gray;
+    text-align: center;
+    /* padding: 30px 0px 30px 0px; */
+}
+
+figcaption > p{
+    margin-top: 7px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+figcaption > a{
+    margin: 16px auto;
+    width: 30%;
+    display: block;
+    color: #fff;
+    border-radius: 3px;
+    padding: 10px;
+    background-color: #0c2546;
+}
+
+.fig > img{
+    width: 60%;
+    border-radius: 5px;
+}
+
+
+
+
 
 
 
