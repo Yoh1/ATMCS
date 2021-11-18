@@ -20,7 +20,7 @@ export default class Filter {
         this.form = element.querySelector('.js-filter-form');
         this.models = element.querySelector('.js-filter-models');
 
-        this.bindEvents()
+        this.bindEvents();
 
     }
 
@@ -52,8 +52,12 @@ export default class Filter {
     }
 
     async loadURL(url) {
-        const ajaxURL = url + '&ajax=1';
-        const response = await fetch(ajaxURL, {
+        this.showLoader();
+        
+        const params = new URLSearchParams(url.split('?')[1] || '');
+        params.set('ajax', 1);
+        //const ajaxURL = url + '&ajax=1';
+        const response = await fetch(url.split('?')[0] + '?' + params.toString(), {
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'
             }
@@ -63,14 +67,37 @@ export default class Filter {
             this.content.innerHTML = data.content;
             this.sorting.innerHTML = data.sorting;
             this.pagination.innerHTML = data.pagination;
-            //this.form.innerHTML = data.form;
             this.models.innerHTML = data.models;
-            //debugger;
-            history.replaceState({}, '', url);
+            params.delete('ajax');
+            history.replaceState({}, '', url.split('?')[0] + '?' + params.toString());
             // voir mettre pushShate au lieu de replaceState
-            this.bindEvents();
+            setTimeout(this.form.querySelectorAll('input').forEach(input => {
+                input.addEventListener('change', this.loadForm.bind(this))
+            }), 1000);
         } else {
             console.error(response);
         }
+        this.hideLoader();
+    }
+
+    showLoader(){
+        this.form.classList.add('is-loading');
+        const loader = this.form.querySelector('.js-loading');
+        if (loader === null) {
+            return
+        }
+        loader.setAttribute('aria-hiddent', 'false');
+        loader.style.display = null;
+    }
+
+    hideLoader(){
+        this.form.classList.remove('is-loading');
+        const loader = this.form.querySelector('.js-loading');
+        if (loader === null) {
+            return
+        }
+        loader.setAttribute('aria-hiddent', 'true');
+        loader.style.display = 'none';
+
     }
 }

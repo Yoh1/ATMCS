@@ -151,7 +151,8 @@ class CarRepository extends ServiceEntityRepository
 
         $query = $this
                     ->createQueryBuilder('c')
-                    ->select('c');
+                    ->select('c')
+                    ->orderBy('c.id', 'DESC');
                     
         if(!empty($data->q)) {
             $query = $query
