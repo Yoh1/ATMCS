@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Annonce;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -27,7 +28,6 @@ class AddController extends AbstractController
 
     public function index(Request $request, EntityManagerInterface $manager)
     {
-
 
         $annonce = new Annonce();
 
@@ -57,24 +57,23 @@ class AddController extends AbstractController
         }
         return $this->render('add/index.html.twig', [
             'controller_name' => 'AddController',
-            'formAnnonce' => $form->createView()
+            'formAnnonce' => $form->createView(),
         ]);
     }
 
 
     /**
-     * @Route("/annonce", name="show_annonce")
+     * @Route("/annonce/{id}", name="show_annonce")
      */
 
 
-    public function showAnnonce()
+    public function showAnnonce($id)
     {
 
         $repo = $this->getDoctrine()->getRepository(Annonce::class);
 
-        $annonces = $repo->find('id');
+        $annonces = $repo->find($id);
 
-        //dd($annonces);
 
         return $this->render('add/annonce.html.twig', [
             'controller_name' => 'AddController',

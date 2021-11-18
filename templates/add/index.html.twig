@@ -12,7 +12,7 @@
 
 {% block body %}
 
-	<link rel="stylesheet" href="{{ '../CSS/style2.css' }}">
+	{# <link rel="stylesheet" href="{{ '../CSS/style2.css' }}"> #}
 
 	<div class="formanno">
 
@@ -36,7 +36,7 @@
 
 		{{ form_row(formAnnonce.image, {'attr': {'placeholder': "URL de l'image"}}) }}
 
-		<input type="file">
+		<input type="file" id="file">
 
 		<button type="submit" id="sub" class="btn btn-success">Ajouter une annonce</button>
 
