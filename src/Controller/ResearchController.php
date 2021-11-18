@@ -68,16 +68,20 @@ class ResearchController extends AbstractController
                 'engines' => $data->engines
             ]);
         }
+        
 
         if($request->get('ajax')) {
             return new JsonResponse([
                 'content' => $this->renderView('research/_cars.html.twig', ['cars' => $cars]),
                 'sorting' => $this->renderView('research/_sorting.html.twig', ['cars' => $cars]),
                 'pagination' => $this->renderView('research/_pagination.html.twig', ['cars' => $cars]),
-                //'form' => $this->renderView('research/_filter.html.twig', ['form' => $form->createView()])
+                //'form' => $this->render('research/index.html.twig', ['form' => $form->createView()])
+                //'models' => $data->models
+                'models' => $this->renderView('research/_models.html.twig', ['models' =>  $data->models])
             ]);
         }
 
+        //dd($data->models);
         
 
         return $this->render('research/index.html.twig', [

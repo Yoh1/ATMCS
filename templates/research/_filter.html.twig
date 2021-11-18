@@ -34,15 +34,8 @@
         </div>
     </div>
 
-    <h4>Modèles</h4>
-    <div class="overflow-auto" style="max-height: 200px">
-        {% for child in form.model %}        
-            {% if child.vars.value != '' %}
-                {{ form_row(child, {'label': child.vars.value }) }}
-            {% else %}
-                {{ form_row(child, {'label': 'Tous les modèles' }) }}
-            {% endif %}
-        {% endfor %}
+    <div class="js-filter-models">
+        {% include 'research/_models.html.twig' with {models: form.model} only %}
     </div>
 
     <h4>Kilométrage</h4>

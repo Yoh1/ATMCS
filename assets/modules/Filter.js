@@ -18,6 +18,7 @@ export default class Filter {
         this.content = element.querySelector('.js-filter-content');
         this.sorting = element.querySelector('.js-filter-sorting');
         this.form = element.querySelector('.js-filter-form');
+        this.models = element.querySelector('.js-filter-models');
 
         this.bindEvents()
 
@@ -63,8 +64,11 @@ export default class Filter {
             this.sorting.innerHTML = data.sorting;
             this.pagination.innerHTML = data.pagination;
             //this.form.innerHTML = data.form;
+            this.models.innerHTML = data.models;
+            //debugger;
             history.replaceState({}, '', url);
             // voir mettre pushShate au lieu de replaceState
+            this.bindEvents();
         } else {
             console.error(response);
         }
