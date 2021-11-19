@@ -8,7 +8,7 @@
 			<div class="col-lg-6">
 				<h3>Top Marques</h3>
 				<hr>
-				<div class="row">
+				{# <div class="row">
 					<div id="conte">
 						<a class="col" href="#">Audi</a>
 						<a class="col" href="#">BMW</a>
@@ -33,12 +33,14 @@
 					<div class="vali">
 						<a href="#">Toutes les Marques</a>
 					</div>
-				</div>
+
+				</div> #}
+				{% include 'home/_brands.html.twig' with {brands: brands} only %}
 			</div>
 			<div class="col-lg-6">
 				<h3>Top Modèles</h3>
 				<hr>
-				<div class="row">
+				{# <div class="row">
 					<div id="conte1">
 						<a class="col" href="#">2008</a>
 						<a class="col" href="#">208</a>
@@ -60,7 +62,8 @@
 					<div class="vali">
 						<a href="#">Tous les Modèles</a>
 					</div>
-				</div>
+				</div> #}
+				{% include 'home/_models.html.twig' with {models: models} only %}
 			</div>
 		</div>
 		<div class="tete">

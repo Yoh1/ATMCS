@@ -79,7 +79,6 @@ class CarRepository extends ServiceEntityRepository
         );
     }
 
-
     public function findBrands($data): array {
 
         $query = $this->getSearchQuery($data)
@@ -145,6 +144,36 @@ class CarRepository extends ServiceEntityRepository
             ->getQuery()
             ->getScalarResult();
         return [(int)$query[0]['minPrice'], (int)$query[0]['maxPrice']];
+    }
+
+    /**
+     * récupère les marques ordonnées par nombre dans la base
+     */
+    public function findTopBrands() : array {
+        $query = $this
+                    ->createQueryBuilder('c')
+                    ->select('c.brand')
+                    ->groupBy('c.brand')
+                    ->orderBy('count(c.brand)', 'DESC');
+        
+        $query = $query->getQuery()->getScalarResult();
+
+        return array_column($query, "brand");
+    }
+
+    /**
+     * récupère les modèles ordonnés par nombre dans la base
+     */
+    public function findTopModels() : array {
+        $query = $this
+                    ->createQueryBuilder('c')
+                    ->select('c.model')
+                    ->groupBy('c.model')
+                    ->orderBy('count(c.model)', 'DESC');
+        
+        $query = $query->getQuery()->getScalarResult();
+
+        return array_column($query, "model");
     }
 
     private function getSearchQuery(SearchData $data, $ignorePrice = false) : QueryBuilder{
