@@ -15,92 +15,100 @@
 
 	<div class="formanno form-control needs-validation">
 
-		<h1>Formulaire d'ajout d'annonce</h1>
+		<h1>Nouvelle voiture à vendre</h1>
+        {{ form_start(formAnnonce) }}
 
-		{{ form_start(formAnnonce) }}
+        <div class="row">
 
-        {{ form_row(formAnnonce.brand, {
-            'label': "Marque", 
-            'attr': {
-                'placeholder': "Marque de la voiture",
-                'required': true,
-                'class': "mb-3"
-            }
-        }) }}
 
-        {{ form_row(formAnnonce.model, {
-            'label': "Modèle", 
-            'attr': {
-                'placeholder': "Modèle de la voiture",
-                'required': true,
-                'class': "mb-3"
-            }
-        }) }}
+            <div class="col-md-8">
+                {{ form_row(formAnnonce.brand, {
+                    'label': "Marque", 
+                    'attr': {
+                        'placeholder': "Marque de la voiture",
+                        'required': true,
+                        'class': "mb-3"
+                    }
+                }) }}
 
-        {{ form_row(formAnnonce.year, {
-            'label': "Année", 
-            'attr': {
-                'placeholder': "Année de la voiture",
-                'required': true,
-                'class': "mb-3",
-            }
-        }) }}
+                {{ form_row(formAnnonce.model, {
+                    'label': "Modèle", 
+                    'attr': {
+                        'placeholder': "Modèle de la voiture",
+                        'required': true,
+                        'class': "mb-3"
+                    }
+                }) }}
 
-        {{ form_row(formAnnonce.mileage, {
-            'label': "Kilométrage", 
-            'attr': {
-                'placeholder': "Kilométrage de la voiture",
-                'required': true,
-                'class': "mb-3",
-            }
-        }) }}
+                {{ form_row(formAnnonce.year, {
+                    'label': "Année", 
+                    'attr': {
+                        'placeholder': "Année de la voiture",
+                        'required': true,
+                        'class': "mb-3",
+                    }
+                }) }}
 
-        {{ form_row(formAnnonce.price, {
-            'label': "Prix", 
-            'attr': {
-                'placeholder': "Prix de vente de la voiture",
-                'required': true,
-                'class': "mb-3"
-            }
-        }) }}
+                {{ form_row(formAnnonce.mileage, {
+                    'label': "Kilométrage", 
+                    'attr': {
+                        'placeholder': "Kilométrage de la voiture",
+                        'required': true,
+                        'class': "mb-3",
+                    }
+                }) }}
 
-        {{ form_row(formAnnonce.location, {
-            'label': "Localisation", 
-            'attr': {
-                'placeholder': "Localisation de la voiture",
-                'required': true,
-                'class': "mb-3"
-            }
-        }) }}
+                {{ form_row(formAnnonce.price, {
+                    'label': "Prix", 
+                    'attr': {
+                        'placeholder': "Prix de vente de la voiture",
+                        'required': true,
+                        'class': "mb-3"
+                    }
+                }) }}
 
-        {{ form_row(formAnnonce.dateFirst, {
-            'label': "Date de mise en circulation de la voiture", 
-            'attr': {
-                'placeholder': "Date de mise en circulation de la voiture",
-                'required': true,
-                'class': "mb-3"
-            }
-        }) }}
+                {{ form_row(formAnnonce.location, {
+                    'label': "Localisation", 
+                    'attr': {
+                        'placeholder': "Localisation de la voiture",
+                        'required': true,
+                        'class': "mb-3"
+                    }
+                }) }}
 
-        {{ form_row(formAnnonce.engine, {
-            'label': "Motorisation", 
-            'attr': {
-                'placeholder': "Type de motorisation de la voiture",
-                'required': true,
-                'class': "mb-3"
-            }
-        }) }}
+                {{ form_row(formAnnonce.dateFirst, {
+                    'label': "Date de mise en circulation de la voiture", 
+                    'attr': {
+                        'placeholder': "Date de mise en circulation de la voiture",
+                        'required': true,
+                        'class': "mb-3"
+                    }
+                }) }}
 
-        {{ form_row(formAnnonce.picture, {
-            'attr': {
-                'class': "mb-3"
-            }
-        }) }}
+                {{ form_row(formAnnonce.engine, {
+                    'label': "Motorisation", 
+                    'attr': {
+                        'placeholder': "Type de motorisation de la voiture",
+                        'required': true,
+                        'class': "mb-3"
+                    }
+                }) }}
+            </div>
 
-		<button type="submit" id="sub" class="btn btn-success">Ajouter une annonce</button>
+            <div class="col-md-4">
+                {{ form_row(formAnnonce.picture, {
+                    'attr': {
+                        'class': "mb-3"
+                    }
+                }) }}
 
-		{{ form_end(formAnnonce) }}
+                <button type="submit" id="sub" class="btn-lg btn-primary fw-bold text-white">Ajouter une annonce</button>
+            </div>
 
+
+        </div>
+        
+        {{ form_end(formAnnonce) }}
 	</div>
 
 
