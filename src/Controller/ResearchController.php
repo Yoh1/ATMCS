@@ -75,9 +75,9 @@ class ResearchController extends AbstractController
                 'content' => $this->renderView('research/_cars.html.twig', ['cars' => $cars]),
                 'sorting' => $this->renderView('research/_sorting.html.twig', ['cars' => $cars]),
                 'pagination' => $this->renderView('research/_pagination.html.twig', ['cars' => $cars]),
-                //'form' => $this->render('research/index.html.twig', ['form' => $form->createView()])
-                //'models' => $data->models
-                'models' => $this->renderView('research/_models.html.twig', ['models' =>  $data->models])
+                //'models' => $this->renderView('research/_models.html.twig', ['models' =>  $data->models]),
+                'min' => $minPrice,
+                'max' => $maxPrice
             ]);
         }
 

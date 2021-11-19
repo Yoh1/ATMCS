@@ -21,7 +21,6 @@ export default class Filter {
         this.models = element.querySelector('.js-filter-models');
 
         this.bindEvents();
-
     }
 
     /**
@@ -67,13 +66,11 @@ export default class Filter {
             this.content.innerHTML = data.content;
             this.sorting.innerHTML = data.sorting;
             this.pagination.innerHTML = data.pagination;
-            this.models.innerHTML = data.models;
+            //this.models.innerHTML = data.models;
             params.delete('ajax');
+            this.updatePrices(data);
             history.replaceState({}, '', url.split('?')[0] + '?' + params.toString());
             // voir mettre pushShate au lieu de replaceState
-            setTimeout(this.form.querySelectorAll('input').forEach(input => {
-                input.addEventListener('change', this.loadForm.bind(this))
-            }), 1000);
         } else {
             console.error(response);
         }
@@ -98,6 +95,21 @@ export default class Filter {
         }
         loader.setAttribute('aria-hiddent', 'true');
         loader.style.display = 'none';
+        /*this.form.querySelectorAll('input').forEach(input => {
+                input.addEventListener('change', this.loadForm.bind(this))
+        });*/
+    }
 
+    updatePrices ({min, max}) {
+        const slider = document.getElementById('price-slider');
+        if(slider === null){
+            return
+        }
+        slider.noUiSlider.updateOptions({
+            range: {
+                min: [min],
+                max: [max]
+            }
+        })
     }
 }

@@ -32,7 +32,7 @@ if(slider) {
     const range = noUiSlider.create(slider, {
         start: [minPrice.value || minValue, maxPrice.value || maxValue],
         connect: true,
-        step: 10,
+        step: 500,
         range: {
             'min': minValue,
             'max': maxValue
