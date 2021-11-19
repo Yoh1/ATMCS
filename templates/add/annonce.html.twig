@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{annonces.brand}} - {{annonces.model}} - {{annonces.year}}{% endblock %}
+
+{% block body %}
+
+    <style>
+        img {
+            max-width: 500px;
+        }
+    </style>
+
+
+	<link rel="stylesheet" href="{{ '../css/annonce.css' }}">
+
+	<section id="article" class="row d-flex justify-content-evenly my-5">
+
+        <div id="div1" class="col-lg-7">
+            {% if annonces.picture %}
+                <img src="/uploads/cars_pictures/{{ annonces.picture }}" alt="{{annonces.brand}} - {{annonces.model}} - {{annonces.year}}">
+            {% else %}
+                <img src="https://via.placeholder.com/500x300" alt="{{annonces.brand}} - {{annonces.model}} - {{annonces.year}}">
+            {% endif %}
+        </div>
+
+		<article class="col-lg-4 mt-5">
+			<div id="div2" class="row text-center">
+				<h3 id="marque_modele">{{annonces.brand}}
+					{{annonces.model}}</h3>
+				{# <p>De modèle :</p> #}
+				<h4>Prix :
+					{{annonces.price | number_format(0, ",", " " )}}
+					€</h4>
+				<h4>Année :
+					{{annonces.year}}</h4>
+				{# <P>Son kilomètrage est de :</p> #}
+				<h4>Compteur :
+					{{annonces.mileage | number_format(0, ",", " " )}}
+					km</h4>
+				{# <p>Son prix est de :</p> #}
+				<h4>Localisé à :
+					{{annonces.location}}</h4>
+				<h4>Date de première circulation :
+					{{annonces.dateFirst | date('d/m/Y')}}</h4>
+				{# <div class="ig"><img src="{{annonces.image}}" alt=""></div> #}
+                <h4>Type de motorisation : 
+                    {{annonces.engine}}
+                </h4>
+			</div>
+		</artcle>
+
+	</section>
+
+{% endblock %}
