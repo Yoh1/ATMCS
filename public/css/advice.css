@@ -1,0 +1,35 @@
+
+
+/* des marges au premier titre et à son paragraphe */
+.ti{
+    margin: 10px;
+}
+.ti1{
+    margin-left: 15px;
+    line-height: 1px;
+}
+
+#conseil{
+    margin: 40px 6px 0px 6px;
+}
+
+#Acheteur, #Vendeur{
+    margin-bottom: 30px;
+}
+
+
+figure > img{
+    width: 98%;
+}
+
+.ach{
+    font-weight: bold;
+}
+
+/* separer les titres Acheteur, Vendeur des blocs qui suivent */
+hr{
+    color: black;
+    margin-bottom: 40px;
+
+}
+

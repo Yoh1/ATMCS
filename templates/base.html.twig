@@ -6,8 +6,7 @@
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
-		{# Run `composer require symfony/webpack-encore-bundle`
-																																																										           and uncomment the following Encore helpers to start using Symfony UX #}
+		{# Run `composer require symfony/webpack-encore-bundle`and uncomment the following Encore helpers to start using Symfony UX #}
 		{# <link rel="stylesheet" href="./bootstrap-5.0.1-dist/css/bootstrap.min.css"> #}
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 		<link rel="stylesheet" href="{{ '../css/style.css' }}">
@@ -17,9 +16,10 @@
 		{% endblock %}
 
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		<script src="{{ '../js/script.js' }} "></script>
+		<script src="{{ '../js/add.js' }} "></script>
 		{% block javascripts %}
 			{#{{ encore_entry_script_tags('app') }}#}
-			<script src="{{ '../js/script.js' }} "></script>
 		{% endblock %}
 	</head>
 	<body>
@@ -35,13 +35,13 @@
 								<a href="{{ path('home') }} "><img src="{{ '../img/logo11.png' }}" alt=""></a>
 							</li>
 							<li class="nav-item ms-3">
-								<a class="nav-link active" href="#">Vendre</a>
+								<a class="nav-link active" href="{{ path('bord_utilisateur') }}">Vendre</a>
 							</li>
 							<li class="nav-item ms-3">
 								<a class="nav-link active" href="#">Finance</a>
 							</li>
 							<li class="nav-item ms-3">
-								<a class="nav-link active" href="#">Conseil</a>
+								<a class="nav-link active" href="{{ path('advice') }}">Conseil</a>
 							</li>
 							<li class="nav-item ms-3">
 								<a class="nav-link active" href="#">Annuaire</a>
@@ -49,20 +49,10 @@
 							<li class="nav-item ms-3">
 								<a class="nav-link active" href="#">Recherche</a>
 							</li>
-							{# <li class="nav-item">
-																																																																																																																	<a class="nav-link active" href="#">Prix</a>
-																																																																																																																</li> #}
 							<li class="nav-item ms-3">
 								<a class="nav-link active" href="#">Inscription</a>
 							</li>
-							<li class="nav-item ms-3">
-								<a class="nav-link active" href="{{ path('add') }} ">Annonce</a>
-							</li>
 						</ul>
-						{# <form class="d-flex">
-																																																																																											<input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
-																																																																																											<button class="btn btn-outline-success" type="submit">Recherche</button>
-																																																																																										</form> #}
 					</div>
 				</div>
 			</nav>

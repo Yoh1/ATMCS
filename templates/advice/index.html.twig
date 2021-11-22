@@ -1,20 +1,84 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdviceController!{% endblock %}
+{% block title %}Hello AdviceController!
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ '../css/advice.css' }}">
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<h3 class="ti">Tous nos conseil</h3>
+	<p class="ti1">Retrouver ici tous les conseils qui devraient mieux vous aider dans vos échanges</p>
+	<div id="conseil" class="row d-flex justify-content-beetwen">
+		<div id="vente" class="col-lg-6">
+			<h4 class="ach">Vendeur</h4>
+			<hr class="hr">
+			<div id="Vendeur">
+				<h4>Coronavirus : la vente en periode coronavirus</h4>
+				<div id="fig" class="row">
+					<figure class="col-lg-3"><img src="{{ '../img/virus-4937553_1920.jpg' }}" alt=""></figure>
+					<p class="col-lg-9">Dans les périodes actuelles avec cette épidémie de Coronavirus, il nous semble important de donner quelques conseils pour bien vendre votre véhicule sans prendre de risque pour votre santé.</p>
+				</div>
+			</div>
+			<div id="Vendeur">
+				<h4>Réussir sa vente les étapes à franchire</h4>
+				<div id="fig" class="row">
+					<figure class="col-lg-3"><img src="{{ '../img/contract-408216_1920.jpg' }}" alt=""></figure>
+					<p class="col-lg-9">Bien réfléchir sur le juste prix de son véhicule, nettoyer son véhicule, mettre en ordre les documents administratifs, comment vendre sa voiture rapidement.</p>
+				</div>
+			</div>
+			<div id="Vendeur">
+				<h4>Éviter les arnaques : Protège votre transaction</h4>
+				<div id="fig" class="row">
+					<figure class="col-lg-3"><img src="{{ '../img/traffic-signs-464641_1920.jpg' }}" alt=""></figure>
+					<p class="col-lg-9">Il faut rester attentif à la sécurité des transactions, en effet tout le monde sur la plateform n’est pas forcément bien intentionnés
+					</p>
+				</div>
+			</div>
+			<div id="Vendeur">
+				<h4>Contrôle technique : Obligatoire sur la plateforme</h4>
+				<div id="fig" class="row">
+					<figure class="col-lg-3"><img src="{{ '../img/tuv-3206059_1920.jpg' }}" alt=""></figure>
+					<p class="col-lg-9">Préparer les documents nécessaire pour faire la preuve de la bonne sécurité de votre voiture, notamment les papiers de control technique
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="achat" class="col-lg-6">
+			<div id="Acheteur">
+				<h4 class="ach">Acheteur</h4>
+				<hr>
+				<h4>Coronavirus : la vente en periode coronavirus</h4>
+				<div id="fig" class="row">
+					<figure class="col-lg-3"><img src="{{ '../img/mask-4898571_1920.jpg' }}" alt=""></figure>
+					<p class="col-lg-9">Dans les périodes actuelles avec cette épidémie de Coronavirus, il nous semble important de donner quelques conseils pour bien vendre votre véhicule sans prendre de risque pour votre santé.</p>
+				</div>
+			</div>
+			<div id="Acheteur">
+				<h4>Réussir son achat les étapes à franchire</h4>
+				<div id="fig" class="row">
+					<figure class="col-lg-3"><img src="{{ '../img/contract-1464917_1920.jpg' }}" alt=""></figure>
+					<p class="col-lg-9">Réussir l’achat de son son véhicule, de la recherche à la remise des clés en passant par les démarches administratives</p>
+				</div>
+			</div>
+			<div id="Acheteur">
+				<h4>Éviter les arnaques : Protège votre transaction</h4>
+				<div id="fig" class="row">
+					<figure class="col-lg-3"><img src="{{ '../img/traffic-signs-663368_1920.jpg' }}" alt=""></figure>
+					<p class="col-lg-9">Comment éviter les nombreux arnaque qui peut y’avoir sur internet, trouver une voiture qui ne vous décevra pas plus tard
+					</p>
+				</div>
+			</div>
+			<div id="Acheteur">
+				<h4>Le financement : Financer sa voiture</h4>
+				<div id="fig" class="row">
+					<figure class="col-lg-3"><img src="{{ '../img/dollars-499481_1920.jpg' }}" alt=""></figure>
+					<p class="col-lg-9">Être bien conseillé dans le financement de votre voiture, Préparez donc un budget qui devra prendre en compte l’usage que vous entendez faire de votre voiture
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/src/Controller/AdviceController.php'|file_link(0) }}">src/Controller/AdviceController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/templates/advice/index.html.twig'|file_link(0) }}">templates/advice/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}

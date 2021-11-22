@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 // use Symfony\Component\HttpFoundation\Response;
 
@@ -32,6 +33,11 @@ class AddController extends AbstractController
         $annonce = new Annonce();
 
         $form = $this->createFormBuilder($annonce)
+            // ->add('marque', TextType::class, [
+            //     'attr' => [
+            //         'id' => 'marque'
+            //     ]
+            // ])
             ->add('marque')
             ->add('modele')
             ->add('annee')

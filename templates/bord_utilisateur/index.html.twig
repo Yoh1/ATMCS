@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BordUtilisateurController!
+{% endblock %}
+
+{# {%form_theme bord_utilisateur 'bootstrap_4_layout.html.twig'%} #}
+
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ '../css/bord_utilisateur.css' }}">
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="container">
+		<h3 class="titre">Vendre sa voiture</h3>
+		<div id="depano" class="row d-flex justify-content-evenly">
+			<div id="gauche" class="col-lg-6">
+				<img src="{{ '../img/key-791390_1920.jpg' }}" alt="">
+				<h3 class="bas">Vendre sur Automoinscheres</h3>
+				<a href="{{ path('add') }}">Déposer une annonce</a>
+			</div>
+			<div id="droite" class="col-lg-6">
+				<img src="{{ '../img/hand-3265578_1920.jpg' }}" alt="">
+				<h3 class="bas">Vente à un professionnel</h3>
+				<a href="">Deposer une annonce pro</a>
+			</div>
+		</div>
+		<div id="bg">
+			<p>Plateform gratuite pour tous les utilisateurs</p>
+			<p>Possibilité de garder une annonce plus longtemps sur le site</p>
+			<p>Capacité de deposer plusieurs photos de votre véhicule  sur l'annonce</p>
+			<p>Pas besoin d'organiser des visites avec des potentiels acheteurs
+			</p>
+		</div>
+	</div>
+{% endblock %}
