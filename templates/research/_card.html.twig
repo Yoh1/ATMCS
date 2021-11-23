@@ -9,8 +9,23 @@
             </class>
             <class class="col-md-3">
                 <a href="{{ path('show_annonce', {'id': car.id}) }}">
-                    <button class="btn-lg btn-primary fw-bold text-white">Voir détails</button>
+                    <button class="btn-lg btn-primary fw-bold text-white mb-3">Voir détails</button>
                 </a>
+                {% set flag = false %}
+                {% for bookedCar in bookedCars %}
+                    {% if bookedCar == car.id %}
+                        {% set flag = true %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if flag  %}
+                    <button class="btn-lg btn-secondary fw-bold text-white">Déjà réservée</button>
+                {% else %}
+                    <a href="{{ path('booked', {'idCar': car.id, 'idUser': app.user.id}) }}">
+                        <button class="btn-lg btn-warning fw-bold text-white">Réserver</button>
+                    </a>
+                {% endif %}
+
             </class>
         </class>
     </div>

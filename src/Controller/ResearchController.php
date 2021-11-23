@@ -2,30 +2,34 @@
 
 namespace App\Controller;
 
+use DateTimeInterface;
 use App\Data\SearchData;
 use App\Form\SearchForm;
 use App\Repository\CarRepository;
-use DateTimeInterface;
-use SebastianBergmann\CodeCoverage\Report\Xml\Report;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Repository\BookingRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
+use SebastianBergmann\CodeCoverage\Report\Xml\Report;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ResearchController extends AbstractController
 {
     /**
      * @Route("/research", name="research")
      */
-    public function index(CarRepository $repository, Request $request): Response
+    public function index(CarRepository $repository, BookingRepository $booking, Request $request): Response
     { 
 
+        //Liste des voitures réservées
+        $bookedCars = $booking->findAllBookings();
+        
         $data = new SearchData();
         $data->page = $request->get('page', 1);
 
@@ -72,12 +76,12 @@ class ResearchController extends AbstractController
 
         if($request->get('ajax')) {
             return new JsonResponse([
-                'content' => $this->renderView('research/_cars.html.twig', ['cars' => $cars]),
+                'content' => $this->renderView('research/_cars.html.twig', ['cars' => $cars, 'bookedCars' => $bookedCars]),
                 'sorting' => $this->renderView('research/_sorting.html.twig', ['cars' => $cars]),
                 'pagination' => $this->renderView('research/_pagination.html.twig', ['cars' => $cars]),
                 //'models' => $this->renderView('research/_models.html.twig', ['models' =>  $data->models]),
                 'min' => $minPrice,
-                'max' => $maxPrice
+                'max' => $maxPrice,
             ]);
         }
 
@@ -88,7 +92,8 @@ class ResearchController extends AbstractController
             'cars' => $cars,
             'form' => $form->createView(),
             'minPrice' => $minPrice,
-            'maxPrice' => $maxPrice
+            'maxPrice' => $maxPrice,
+            'bookedCars' => $bookedCars
         ]);
     }
 }

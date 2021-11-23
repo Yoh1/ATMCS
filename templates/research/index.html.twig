@@ -18,7 +18,7 @@
                     {% include 'research/_sorting.html.twig' with {cars: cars} only %}
                 </div>
                 <div class="js-filter-content">
-                    {% include 'research/_cars.html.twig' with {cars: cars} only %}
+                    {% include 'research/_cars.html.twig' with {cars: cars, bookedCars: bookedCars} only %}
                 </div>
             </div>
         </div>
