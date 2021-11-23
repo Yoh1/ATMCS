@@ -43,15 +43,22 @@ export default class Filter {
     async loadForm() {
         const data = new FormData(this.form);
         const url = new URL(this.form.getAttribute('action') || window.location.href);
+        const urlSorting = url.searchParams;
+        let paramSorting = "";
         const params = new URLSearchParams();
         data.forEach((value, key) => {
             params.append(key, value)
         })
-        return this.loadURL(url.pathname + '?' + params.toString())
+        if(urlSorting.get('sort')){
+            paramSorting = '&sort=' +  urlSorting.get('sort') + '&direction=' + urlSorting.get('direction');
+        }
+        return this.loadURL(url.pathname + '?' + params.toString() + paramSorting)
     }
 
     async loadURL(url) {
         this.showLoader();
+
+        //console.log(url);
         
         const params = new URLSearchParams(url.split('?')[1] || '');
         params.set('ajax', 1);
@@ -61,16 +68,19 @@ export default class Filter {
                 'X-Requested-With': 'XMLHttpRequest'
             }
         })
+
         if(response.status >= 200 && response.status < 300){
             const data = await response.json();
             this.content.innerHTML = data.content;
             this.sorting.innerHTML = data.sorting;
             this.pagination.innerHTML = data.pagination;
+            //pour actualiser la liste des modèles automatiquement, mais ne fonctionne pas parfairement actuellement
             //this.models.innerHTML = data.models;
             params.delete('ajax');
             this.updatePrices(data);
             history.replaceState({}, '', url.split('?')[0] + '?' + params.toString());
             // voir mettre pushShate au lieu de replaceState
+            
         } else {
             console.error(response);
         }
@@ -83,7 +93,7 @@ export default class Filter {
         if (loader === null) {
             return
         }
-        loader.setAttribute('aria-hiddent', 'false');
+        loader.setAttribute('aria-hidden', 'false');
         loader.style.display = null;
     }
 
@@ -93,11 +103,12 @@ export default class Filter {
         if (loader === null) {
             return
         }
-        loader.setAttribute('aria-hiddent', 'true');
+        loader.setAttribute('aria-hidden', 'true');
         loader.style.display = 'none';
         /*this.form.querySelectorAll('input').forEach(input => {
                 input.addEventListener('change', this.loadForm.bind(this))
-        });*/
+        });
+        Instruction pour relancer le event listener sur la nouvelle liste de modèles. ne fonctionne pas parfaitement*/
     }
 
     updatePrices ({min, max}) {

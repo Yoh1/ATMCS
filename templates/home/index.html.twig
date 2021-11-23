@@ -8,61 +8,11 @@
 			<div class="col-lg-6">
 				<h3>Top Marques</h3>
 				<hr>
-				{# <div class="row">
-					<div id="conte">
-						<a class="col" href="#">Audi</a>
-						<a class="col" href="#">BMW</a>
-						<a class="col" href="#">Citroen</a>
-						<a class="col" href="#">Peugeot</a>
-						<a class="col" href="#">Renault</a>
-					</div>
-					<div id="conte">
-						<a class="col" href="#">Fiat</a>
-						<a class="col" href="#">Ford</a>
-						<a class="col" href="#">Mercedes</a>
-						<a class="col" href="#">Toyota</a>
-						<a class="col" href="#">VW</a>
-					</div>
-					<div id="conte">
-						<a class="col" href="#">Mini</a>
-						<a class="col" href="#">Nissan</a>
-						<a class="col" href="#">Opel</a>
-						<a class="col" href="#">Abarth</a>
-						<a class="col" href="#">Jaguar</a>
-					</div>
-					<div class="vali">
-						<a href="#">Toutes les Marques</a>
-					</div>
-
-				</div> #}
 				{% include 'home/_brands.html.twig' with {brands: brands} only %}
 			</div>
 			<div class="col-lg-6">
 				<h3>Top Modèles</h3>
 				<hr>
-				{# <div class="row">
-					<div id="conte1">
-						<a class="col" href="#">2008</a>
-						<a class="col" href="#">208</a>
-						<a class="col" href="#">3008</a>
-						<a class="col" href="#">308</a>
-					</div>
-					<div id="conte1">
-						<a class="col" href="#">500</a>
-						<a class="col" href="#">Cl</a>
-						<a class="col" href="#">Captur</a>
-						<a class="col" href="#">Clio</a>
-					</div>
-					<div id="conte1">
-						<a class="col" href="#">Golf</a>
-						<a class="col" href="#">Kadjar</a>
-						<a class="col" href="#">Megan</a>
-						<a class="col" href="#">Polo</a>
-					</div>
-					<div class="vali">
-						<a href="#">Tous les Modèles</a>
-					</div>
-				</div> #}
 				{% include 'home/_models.html.twig' with {models: models} only %}
 			</div>
 		</div>
@@ -105,14 +55,14 @@
 				<div class="fig">
 					<img src="{{ '../img/car-1376190_1920.jpg' }}" alt="">
 				</div>
-				<a href="">En savoir +</a>
+				<a href="{{ path('research', {sort: "c.mileage", direction: "ASC"}) }}">En savoir +</a>
 			</figcaption>
 			<figcaption class="col-sm-10 mb-5 col-lg-5">
 				<p>Les moins chères</p>
 				<div class="fig">
 					<img src="{{ '../img/car-1081742_1920.jpg' }}" alt="">
 				</div>
-				<a href="">En savoir +</a>
+				<a href="{{ path('research', {sort: "c.price", direction: "ASC"}) }}">En savoir +</a>
 			</figcaption>
 		</div>
 	</div>
