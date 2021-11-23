@@ -1,0 +1,3 @@
+{% for car in cars %}
+    {% include 'research/_card.html.twig' with {car: car} only %}
+{% endfor %}

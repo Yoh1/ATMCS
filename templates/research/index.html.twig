@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de votre recherche{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="container-fluid js-filter mt-3">
+        <div class="row">
+            <div class="col-md-3 sticky-top mt-3">
+                {% include 'research/_filter.html.twig' with {form: form, minPrice: minPrice, maxPrice: maxPrice} only %}
+            </div>
+
+        
+            <div class="col-md-9">
+                <div class="d-flex justify-content-end mb-2 js-filter-sorting">
+                    {% include 'research/_sorting.html.twig' with {cars: cars} only %}
+                </div>
+                <div class="js-filter-content">
+                    {% include 'research/_cars.html.twig' with {cars: cars} only %}
+                </div>
+            </div>
+        </div>
+         <div class="js-filter-pagination">
+            {% include 'research/_pagination.html.twig' with {cars: cars} only %}
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
