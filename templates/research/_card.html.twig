@@ -18,7 +18,7 @@
                     {% endif %}
                 {% endfor %}
 
-                {% if flag  %}
+                {% if flag %}
                     <button class="btn-lg btn-secondary fw-bold text-white">Déjà réservée</button>
                 {% else %}
                     <a href="{{ path('booked', {'idCar': car.id, 'idUser': app.user.id}) }}">

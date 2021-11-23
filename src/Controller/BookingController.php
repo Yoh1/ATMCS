@@ -6,6 +6,7 @@ use App\Entity\Car;
 use App\Entity\Users;
 use App\Entity\Booking;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BookingController extends AbstractController
 {
     /**
-     * @Route("/booking", name="booking")
+     * @Route("/book", name="booking")
      */
     public function index(): Response
     {
@@ -26,7 +27,7 @@ class BookingController extends AbstractController
     /**
      * Réserver une voiture
      *
-     * @Route("{idCar}+{idUser}", name="booked")
+     * @Route("/booking/{idCar}+{idUser}", name="booked")
      */
     public function bookingCar(EntityManagerInterface $manager, $idCar, $idUser) {
 

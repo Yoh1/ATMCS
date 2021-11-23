@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Car;
+use App\Entity\Booking;
 use App\Data\SearchData;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -79,6 +80,12 @@ class CarRepository extends ServiceEntityRepository
         );
     }
 
+    /**
+     * récupère la liste de toutes les marques
+     *
+     * @param [type] $data
+     * @return array
+     */
     public function findBrands($data): array {
 
         $query = $this->getSearchQuery($data)
@@ -95,6 +102,12 @@ class CarRepository extends ServiceEntityRepository
     SELECT brand, count(brand) FROM `car` GROUP BY brand
     pour récuper le nombre de marques en même temps */
 
+    /**
+     * récupère la liste de tous les modèles
+     *
+     * @param SearchData $data
+     * @return array
+     */
     public function findModels(SearchData $data): array {
 
         $query = $this->getSearchQuery($data)
@@ -107,6 +120,12 @@ class CarRepository extends ServiceEntityRepository
         return array_column($query, "model");
     }
 
+    /**
+     * récupère la liste de toutes les localisations
+     *
+     * @param SearchData $data
+     * @return array
+     */
     public function findLocations(SearchData $data): array {
 
         $query = $this->getSearchQuery($data)
@@ -119,6 +138,12 @@ class CarRepository extends ServiceEntityRepository
         return array_column($query, "location");
     }
 
+    /**
+     * recupère la liste de toutes les motorisations
+     *
+     * @param SearchData $data
+     * @return array
+     */
     public function findEngines(SearchData $data): array {
 
         $query = $this->getSearchQuery($data)
@@ -130,6 +155,7 @@ class CarRepository extends ServiceEntityRepository
 
         return array_column($query, "engine");
     }
+
 
     /**
      * récupère les prix minimums et maximums
@@ -176,6 +202,13 @@ class CarRepository extends ServiceEntityRepository
         return array_column($query, "model");
     }
 
+    /**
+     * fonction qui construit la requête de recherche
+     *
+     * @param SearchData $data
+     * @param boolean $ignorePrice
+     * @return QueryBuilder
+     */
     private function getSearchQuery(SearchData $data, $ignorePrice = false) : QueryBuilder{
 
         $query = $this
