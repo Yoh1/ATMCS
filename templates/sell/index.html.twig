@@ -1,20 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SellController!{% endblock %}
+{% block title %}Vendre{% endblock %}
+
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<div class="container">
+		<h1 class="text-center">Vendre sa voiture</h1>
+		<div class="row gx-1">
+			<div class="col-12 d-flex flex-column align-items-center col-lg-6">
+				{# <img src="{{ 'img/key.jpg' }}" alt="clé de voiture" class="d-none d-lg-block pictures"> #}
+				<h2 class="text-center">Vendre vous-même sur Autosmoinscheres</h2>
+				<button type="button" class="btn btn-info m-2">Déposer une annonce</button>
+				<div>
+					<ul class="m-3 bg-light">
+						<li>Gratuit pour tous les véhicules</li>
+						<li>Une visibilité maximale de votre annonce</li>
+						<li>Tout compris : modifications gratuites</li>
+					</ul>
+				</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/src/Controller/SellController.php'|file_link(0) }}">src/Controller/SellController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/templates/sell/index.html.twig'|file_link(0) }}">templates/sell/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+			</div>
+			<div class="col-12 d-flex flex-column align-items-center col-lg-6" >
+				{# <img src="{{ 'img/negocier.jpg' }}" alt="poignée de main" class="d-none d-lg-block pictures"> #}
+				<h2>Vendre a titre professionnel</h2>
+				<button type="button" class="btn btn-info m-2">Déposer une annonce professionnel</button>
+				<ul class="m-3 bg-light">
+					<li>visibilité accrue de vos véhicules</li>
+					<li>Pas de visites à organiser avec des acheteurs potentiels</li>
+					<li>Une vente en 1 rendez-vous et sans formalités administratives</li>
+				</ul>
+			</div>
+            <article>
+                <div class="row ">
+                    <div class="col-12 d-flex justify-content-center">
+                        <h2>les engagements de Automoinscheres</h2>
+                    </div>
+                     <div class="col-12 d-flex justify-content-center">
+                        <i class="bi bi-shield-fill icons"></i>
+                     </div>
+                     <div class="col-12 col-12 d-flex justify-content-center text-center">
+                        <p>Bouclier anti-fraude La Centrale
+Données personnelles 100% protégées : vos nom, adresse et email ne sont jamais affichés sur le site. Votre numéro de téléphone est remplacé par un numéro Sécuritel qui redirige les appels sur votre téléphone.</p>
+                     </div>
+                        <div class="col-12 col-12 d-flex justify-content-center">
+                        <i class="bi bi-exclamation-triangle-fill icons"></i>
+                     </div>
+                     <div class="col-12 col-12 d-flex justify-content-center text-center">
+                        <p>Annonces enrichies : les données techniques (consommation, chevaux, dimensions...) de votre véhicule et un rapport de son historique (changement de propriétaires, contrôles techniques) seront automatiquement ajoutés à votre annonce.</p>
+                     </div>
+                     <div class="col-12 d-flex justify-content-center">
+                        <i class="bi bi-eye-fill icons"></i>
+                     </div>
+                       <div class="col-12 col-12 d-flex justify-content-center text-center">
+                        <p>Tout est compris dans le forfait : publication de votre annonce jusqu'à la vente*, modifications gratuites et illimitées, jusqu'à 50 photos sur votre annonce, protection de votre numéro de téléphone (Sécuritel).
+                        Gratuit pour tous les véhicules A renouveler gratuitement tous les 30 jours, pour confirmer que votre véhicule est toujours à vendre.</p>
+						<br>
+                     </div>
+						<p class="text-center fst-italic">A renouveler gratuitement tous les 30 jours, pour confirmer que votre véhicule est toujours à vendre.</p>
+
+                </div>
+                
+            
+            </article>
+
+		</div>
+	{% endblock %}

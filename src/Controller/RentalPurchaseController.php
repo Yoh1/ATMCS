@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SellController extends AbstractController
+class RentalPurchaseController extends AbstractController
 {
     /**
-     * @Route("/vendre", name="vendre")
+     * @Route("/finance/location", name="location_achat")
      */
     public function index(): Response
     {
-        return $this->render('sell/index.html.twig', [
-            'controller_name' => 'SellController',
+        return $this->render('rental_purchase/index.html.twig', [
+            'controller_name' => 'RentalPurchaseController',
         ]);
     }
 }

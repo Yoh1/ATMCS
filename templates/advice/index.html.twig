@@ -1,20 +1,92 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdviceController!{% endblock %}
+{% block title %}Conseils
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="container">
+		<h1>Tous nos conseils</h1>
+		<p>Retrouvez tous nos conseils pour réussir votre transaction avec AutosMoinscheres</p>
+		<div class="row d-flex flex-row flex-lg-row ">
+			<div class="col-12 col-lg-12">
+				<h3>Documents utiles pour le vendeur</h3>
+			</div>
+			<div class="col-6 mt-1">
+				<a href="https://siv.interieur.gouv.fr/map-usg-ui/do/accueil_certificat" target="_blank">
+					<button type="button" class="btn btn-primary">Le certificat de situation</button>
+				</a>
+			</div>
+			<div class="col-6 mt-1">
+				<a href="https://www.service-public.fr/simulateur/calcul/15776" target="_blank">
+					<button type="button" class="btn btn-primary">Le certificat de cession</button>
+				</a>
+			</div>
+		</div>
+		<div class="row d-flex  flex-row flex-lg-row ">
+			<div class="col-12">
+				<div class="col-12">
+					<h3>Documents utiles pour l'acheteur</h3>
+				</div>
+			</div>
+			<div class="col-6 mt-1">
+				<a href="https://www.lacentrale.fr/images/lc_fr/check-list_acheteur.pdf" target="_blank">
+					<button type="button" class="btn btn-primary">la check-list de visite</button>
+				</a>
+			</div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+			<div class="col-6 mb-3">
+				<a href="https://immatriculation.ants.gouv.fr/" target="_blank">
+					<button type="button" class="btn btn-primary"> certificat d'immatriculation</button>
+				</a>
+			</div>
+		</div>
+		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 d-flex align-items-center">
+			<div class="col">
+				<div class="card" style="width: 80%;">
+					<img src="{{'img/kadjar.jpg'}}" class="card-img-top" alt="kadjar">
+					<div class="card-body">
+						<h5 class="card-title">Vendeurs : La vente de votre véhicule en période Coronavirus</h5>
+						<p class="card-text">Attentifs à votre sécurité, il nous semble indispensable de vous conseiller sur les bonnes pratiques à adopter pour la vente de votre véhicule dans le contexte actuel, notamment lors de vos rencontres avec de potentiels acquéreurs.</p>
+						<a href="{{ path('vente_voiture') }}" class="btn btn-primary">En savoir plus</a>
+					</div>
+				</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/src/Controller/AdviceController.php'|file_link(0) }}">src/Controller/AdviceController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/templates/advice/index.html.twig'|file_link(0) }}">templates/advice/index.html.twig</a></code></li>
-    </ul>
-</div>
+			</div>
+			<div class="col">
+				<div class="card" style="width: 80%;">
+					<img src="{{'img/sell.jpg'}}" class="card-img-top" alt="vendeur">
+					<div class="card-body">
+						<h5 class="card-title">Acheteurs : L’achat de votre véhicule en période Coronavirus</h5>
+						<p class="card-text">Attentifs à votre sécurité, il nous semble indispensable de vous conseiller sur les bonnes pratiques à adopter pour l’achat de votre véhicule dans le contexte actuel, notamment lors de vos rencontres avec les vendeurs.</p>
+						<a href="{{ path('achat_voiture') }}" class="btn btn-primary">En savoir plus</a>
+					</div>
+				</div>
+			</div>
+			<div class="col mt-3">
+				<div class="card" style="width: 80%;">
+					<img src="{{'img/money.jpg'}}" class="card-img-top" alt="billet">
+					<div class="card-body">
+						<h5 class="card-title">Bien vendre sa voiture étape par étape</h5>
+						<p class="card-text">Définir le prix juste, préparer votre voiture, les visites, les formalités administratives.
+																																			Découvrez comment vendre votre véhicule rapidement et dans les meilleures conditions.
+																																			Documents utiles pour le vendeur</p>
+						<a href=" {{ path('vendre_sa_voiture') }}" class="btn btn-primary">En savoir plus</a>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card" style="width: 80%;">
+					<img src="{{'img/etape.jpg'}}" class="card-img-top" alt="etape">
+					<div class="card-body">
+						<h5 class="card-title">Bien acheter sa voiture étape par étape</h5>
+						<p class="card-text">Définir le prix juste, préparer votre voiture, les visites, les formalités administratives. Découvrez comment vendre votre véhicule rapidement et dans les meilleures conditions.</p>
+						<a href="{{ path('bien_acheter') }} " class="btn btn-primary">En savoir plus</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
 {% endblock %}
