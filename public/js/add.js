@@ -6,7 +6,6 @@ listInputs.style = 'color:red';
 
 let btn = document.getElementById('sub');
 
-// let erreur = document.querySelectorAll('error');
 
 
 // let anno = document.getElementById("conteneur");
@@ -21,28 +20,6 @@ let btn = document.getElementById('sub');
 
 
 
-// let ma = document.getElementById("marque");
-
-// let ma = document.getElementById("form_marque");
-// ma.style.color = "red";
-
-
-// let ma = document.getElementById('form_marque');
-// let mo = document.getElementById('form_modele');
-// let anne = document.getElementById('form_annee');
-// let kilo = document.getElementById('form_kolometrage');
-// let prix = document.getElementById('form_prix');
-// let loca = document.getElementById('form_localisation');
-// let da = document.getElementById('form_date');
-// let mage = document.getElementById('form_image');
-
-// let btn = document.getElementById('sub');
-// let fi = document.getElementById('file');
-
-// erreur.textContent = 'hello';
-
-
-
 
 // document.querySelector("form").addEventListener("submit", formValid)
 
@@ -52,29 +29,24 @@ let btn = document.getElementById('sub');
 btn.addEventListener('click', formValid);
 
 function formValid() {
-    console.log('yes !');
     // e.preventDefault();
-
-    // if (listInputs.validity.valueMissing) {
-    // erreur.classList.add = '.error'
-
-
-
     for (input of listInputs) {
 
-
         let p1 = document.createElement('p');
-        p1.classList.add = 'error'
+        // p1.classList.add = 'error'
         p1.style.color = 'red'
         p1.style.fontWeight = 'bold'
         input.parentElement.append(p1)
 
+        // input = false;
+        // inputElement.parentNode.lastElementChild.innerText = "";
 
         if ((input.value) == "") {
             // e.preventDefault();
             p1.innerHTML = 'Veuillez remplire le champs vide';
         }
-
+        // input = false;
+        // inputElement.parentNode.lastElementChild.innerText = "";
 
     }
 }
