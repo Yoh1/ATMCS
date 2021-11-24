@@ -54,9 +54,16 @@
 							<li class="nav-item">
 								<a href="{{ path('home') }} "><img src="{{ '../img/logo11.png' }}" alt=""></a>
 							</li>
+							{% if app.user %}
 							<li class="nav-item ms-3">
-								<a class="nav-link active" href="{{ path('vendre_sa_voiture') }}">Vendre</a>
+								<a class="nav-link active" href="{{ path('vendre') }}">Vendre</a>
 							</li>
+							{% else %}
+							<li class="nav-item ms-3">
+								<a class="nav-link active d-none" href="{{ path('vendre') }}">Vendre</a>
+							</li>
+							{% endif %}
+							
 							<li class="nav-item ms-3">
 								<a class="nav-link active" href="{{ path('finance') }}">Finance</a>
 							</li>
@@ -75,9 +82,31 @@
 							<li class="nav-item ms-3">
 								<a class="nav-link active" href="{{ path('app_register') }}">Inscription</a>
 							</li>
+							{% if  app.user %}
 							<li class="nav-item ms-3">
 								<a class="nav-link active" href="{{ path('add') }}">Annonce</a>
 							</li>
+							{% else %}
+							<li class="nav-item ms-3">
+								<a class="nav-link active d-none" href="{{ path('add') }}">Annonce</a>
+							</li>
+							{% endif %}
+								{% if  app.user %}
+							<li class="nav-item ms-3">
+								<a class="nav-link active d-none" href="{{ path('app_login') }}">Connexion</a>
+							</li>
+							{% else %}
+							<li class="nav-item ms-3">
+								<a class="nav-link active" href="{{ path('app_login') }}">Connexion</a>
+							</li>
+							{% endif %}
+							{% if app.user %}
+							<li class="nav-item ms-3">
+								<a class="nav-link active" href="{{ path('app_logout') }}">Déconnexion</a>
+							</li>
+							{% endif %}
+
+							
 						</ul>
 						{# <form class="d-flex">
 							<input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
