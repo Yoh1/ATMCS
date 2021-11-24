@@ -7,7 +7,8 @@
 	<link rel="stylesheet" href="{{ '../css/form_annonce.css' }} ">
 {% endblock %}
 
-{% block title %}Ajouter une annonce{% endblock %}
+{% block title %}Ajouter une annonce
+{% endblock %}
 
 {% block body %}
 
@@ -16,13 +17,13 @@
 	<div class="formanno form-control needs-validation">
 
 		<h1>Nouvelle voiture à vendre</h1>
-        {{ form_start(formAnnonce) }}
+		{{ form_start(formAnnonce) }}
 
-        <div class="row">
+		<div class="row">
 
 
-            <div class="col-md-8">
-                {{ form_row(formAnnonce.brand, {
+			<div class="">
+				{{ form_row(formAnnonce.brand, {
                     'label': "Marque", 
                     'attr': {
                         'placeholder': "Marque de la voiture",
@@ -31,7 +32,7 @@
                     }
                 }) }}
 
-                {{ form_row(formAnnonce.model, {
+				{{ form_row(formAnnonce.model, {
                     'label': "Modèle", 
                     'attr': {
                         'placeholder': "Modèle de la voiture",
@@ -40,7 +41,7 @@
                     }
                 }) }}
 
-                {{ form_row(formAnnonce.year, {
+				{{ form_row(formAnnonce.year, {
                     'label': "Année", 
                     'attr': {
                         'placeholder': "Année de la voiture",
@@ -49,7 +50,7 @@
                     }
                 }) }}
 
-                {{ form_row(formAnnonce.mileage, {
+				{{ form_row(formAnnonce.mileage, {
                     'label': "Kilométrage", 
                     'attr': {
                         'placeholder': "Kilométrage de la voiture",
@@ -58,7 +59,7 @@
                     }
                 }) }}
 
-                {{ form_row(formAnnonce.price, {
+				{{ form_row(formAnnonce.price, {
                     'label': "Prix", 
                     'attr': {
                         'placeholder': "Prix de vente de la voiture",
@@ -67,7 +68,7 @@
                     }
                 }) }}
 
-                {{ form_row(formAnnonce.location, {
+				{{ form_row(formAnnonce.location, {
                     'label': "Localisation", 
                     'attr': {
                         'placeholder': "Localisation de la voiture",
@@ -76,7 +77,7 @@
                     }
                 }) }}
 
-                {{ form_row(formAnnonce.dateFirst, {
+				{{ form_row(formAnnonce.dateFirst, {
                     'label': "Date de mise en circulation de la voiture", 
                     'attr': {
                         'placeholder': "Date de mise en circulation de la voiture",
@@ -85,7 +86,7 @@
                     }
                 }) }}
 
-                {{ form_row(formAnnonce.engine, {
+				{{ form_row(formAnnonce.engine, {
                     'label': "Motorisation", 
                     'attr': {
                         'placeholder': "Type de motorisation de la voiture",
@@ -93,22 +94,22 @@
                         'class': "mb-3"
                     }
                 }) }}
-            </div>
+			</div>
 
-            <div class="col-md-4">
-                {{ form_row(formAnnonce.picture, {
+			<div class="">
+				{{ form_row(formAnnonce.picture, {
                     'attr': {
                         'class': "mb-3"
                     }
                 }) }}
 
-                <button type="submit" id="sub" class="btn-lg btn-primary fw-bold text-white">Ajouter une annonce</button>
-            </div>
+				<button type="submit" id="sub" class="btn-lg btn-primary fw-bold text-white">Ajouter une annonce</button>
+			</div>
 
 
-        </div>
-        
-        {{ form_end(formAnnonce) }}
+		</div>
+
+		{{ form_end(formAnnonce) }}
 	</div>
 
 

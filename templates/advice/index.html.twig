@@ -4,10 +4,10 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+	<div class="container mt-3 mb-3">
 		<h1>Tous nos conseils</h1>
 		<p>Retrouvez tous nos conseils pour réussir votre transaction avec AutosMoinscheres</p>
-		<div class="row d-flex flex-row flex-lg-row ">
+		<div class="row d-flex justify-content-around ">
 			<div class="col-12 col-lg-12">
 				<h3>Documents utiles pour le vendeur</h3>
 			</div>
@@ -36,7 +36,8 @@
 
 			<div class="col-6 mb-3">
 				<a href="https://immatriculation.ants.gouv.fr/" target="_blank">
-					<button type="button" class="btn btn-primary"> certificat d'immatriculation</button>
+					<button type="button" class="btn btn-primary">
+						certificat d'immatriculation</button>
 				</a>
 			</div>
 		</div>
@@ -68,8 +69,8 @@
 					<div class="card-body">
 						<h5 class="card-title">Bien vendre sa voiture étape par étape</h5>
 						<p class="card-text">Définir le prix juste, préparer votre voiture, les visites, les formalités administratives.
-																																			Découvrez comment vendre votre véhicule rapidement et dans les meilleures conditions.
-																																			Documents utiles pour le vendeur</p>
+																																																								Découvrez comment vendre votre véhicule rapidement et dans les meilleures conditions.
+																																																								Documents utiles pour le vendeur</p>
 						<a href=" {{ path('vendre_sa_voiture') }}" class="btn btn-primary">En savoir plus</a>
 					</div>
 				</div>

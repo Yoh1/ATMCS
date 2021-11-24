@@ -4,14 +4,14 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+	<div class="container mt-4 mb-3">
 		<h1>Financer sa voiture : tout savoir sur vos options de financement
 		</h1>
 		<p>Vous avez trouvé la voiture qui répond parfaitement à vos besoins ? Avec les solutions de financement exclusives Aramisauto, préservez intelligemment votre épargne et bénéficiez d’une solution personnalisée
 		</p>
-		<div class="row  row-cols-1 row-cols-md-2 row-cols-lg-2 ">
+		<div class="row">
 
-			<div class=" col d-flex flex-column align-items-center ">
+			<div class="col-lg-6 d-flex flex-column align-items-center mt-3">
 				<h2>Crédit classique</h2>
 				<i class="bi bi-coin ico"></i>
 				<h3>Je veux</h3>
@@ -19,10 +19,10 @@
 					<li>financer l'achat de ma voiture sans contrainte</li>
 					<li>bénéficier de taux négociés sans frais de dossier</li>
 					<li>des garanties en cas de coup dur</li>
+					<a href="{{ path('credit_classique') }}">Notre préconisation : Crédit classque</a>
 				</ul>
-				<a href="{{ path('credit_classique') }}">Notre préconisation : Crédit classque</a>
 			</div>
-			<div class=" col d-flex flex-column align-items-center">
+			<div class="col-lg-6 d-flex flex-column align-items-center mt-3">
 				<h2>Location avec option d'achat</h2>
 				<i class="bi bi-bank2 ico "></i>
 				<h3>Je veux</h3>
