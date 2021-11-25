@@ -26,14 +26,23 @@
         <div class="card m-3 col-md-5">
             <div class="card-body">
                 <article class="mt-5">
-                    <div id="div2" class="row text-center">
+                    <div id="" class="row text-center">
                         <h3 id="marque_modele">{{annonces.brand}} {{annonces.model}} - {{annonces.year}}</h3>
                         <h4>{{annonces.price | number_format(0, ",", " " )}}€ - {{annonces.mileage | number_format(0, ",", " " )}} km</h4>
                         <h4>{{annonces.location}}</h4>
                         <h5><span class="text-uppercase">{{annonces.engine}}</span></h5>
                         <h4>Date de première circulation :
                             {{annonces.dateFirst | date('d/m/Y')}}</h4>
-
+                        <p> {{annonces.description}}</p>
+                        {% if annonces.booked == 1 %}
+                            <button class="btn-lg btn-secondary fw-bold text-white">Déjà réservée</button>
+                        {% else %}
+                            {% if app.user %}
+                                <a href="{{ path('booked', {'idCar': annonces.id, 'idUser': app.user.id}) }}">
+                                    <button class="btn-lg btn-warning fw-bold text-white">Réserver</button>
+                                </a>
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </artcle>
             </div>

@@ -33,6 +33,8 @@ class BookingController extends AbstractController
 
         $repoCar = $this->getDoctrine()->getRepository(Car::class);
         $bookedCar = $repoCar->find($idCar);
+
+        $bookedCar->setBooked(true);
         
         $repoUser = $this->getDoctrine()->getRepository(Users::class);
         $bookingUser = $repoUser->find($idUser);
