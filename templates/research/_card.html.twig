@@ -11,15 +11,21 @@
                 <a href="{{ path('show_annonce', {'id': car.id}) }}">
                     <button class="btn-lg btn-primary fw-bold text-white mb-3">Voir détails</button>
                 </a>
-                {% set flag = false %}
-                {% for bookedCar in bookedCars %}
-                    {% if bookedCar == car.id %}
-                        {% set flag = true %}
-                    {% endif %}
-                {% endfor %}
 
-                {% if flag %}
-                    <button class="btn-lg btn-secondary fw-bold text-white">Déjà réservée</button>
+
+                {% set flag = false %}
+                {% if car.booked == 1 %}
+                    {% if app.user %}
+                        {% for booked in bookedCars %}
+                            {% if app.user.id == booked.idUser.toInt and not flag %}
+                                <button class="btn-lg btn-secondary fw-bold text-white">Annuler réservation</button>
+                                {% set flag = true %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if not flag %}
+                        <button class="btn-lg btn-secondary fw-bold text-white">Déjà réservée</button>
+                    {% endif %}
                 {% else %}
                     {% if app.user %}
                         <a href="{{ path('booked', {'idCar': car.id, 'idUser': app.user.id}) }}">

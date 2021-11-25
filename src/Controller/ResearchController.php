@@ -28,7 +28,8 @@ class ResearchController extends AbstractController
     { 
 
         //Liste des voitures réservées
-        $bookedCars = $booking->findAllBookings();
+        //$bookedCars = $booking->findAllBookings();
+        $bookedCars = $booking->findAll();
         
         $data = new SearchData();
         $data->page = $request->get('page', 1);
