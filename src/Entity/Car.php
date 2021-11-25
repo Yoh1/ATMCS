@@ -62,6 +62,27 @@ class Car
      */
     private $picture;
 
+    /**
+     * @ORM\Column(type="text", length=65535, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=false, options={"default": false})
+     */
+    private $booked;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="cars")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $owner;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -171,6 +192,54 @@ class Car
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getBooked(): ?bool
+    {
+        return $this->booked;
+    }
+
+    public function setBooked(bool $booked): self
+    {
+        $this->booked = $booked;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getOwner(): ?Users
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?Users $owner): self
+    {
+        $this->owner = $owner;
 
         return $this;
     }

@@ -49,9 +49,15 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $bookings;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Car::class, mappedBy="owner")
+     */
+    private $cars;
+
     public function __construct()
     {
         $this->bookings = new ArrayCollection();
+        $this->cars = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -179,6 +185,41 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($booking->getIdUser() === $this) {
                 $booking->setIdUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getIsVerified(): ?bool
+    {
+        return $this->isVerified;
+    }
+
+    /**
+     * @return Collection|Car[]
+     */
+    public function getCars(): Collection
+    {
+        return $this->cars;
+    }
+
+    public function addCar(Car $car): self
+    {
+        if (!$this->cars->contains($car)) {
+            $this->cars[] = $car;
+            $car->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCar(Car $car): self
+    {
+        if ($this->cars->removeElement($car)) {
+            // set the owning side to null (unless already changed)
+            if ($car->getOwner() === $this) {
+                $car->setOwner(null);
             }
         }
 

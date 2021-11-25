@@ -3,12 +3,15 @@
 namespace App\DataFixtures;
 
 use App\Entity\Car;
+use App\Entity\Users;
+use App\Repository\UsersRepository;
 use DateTimeInterface;
-
+use Doctrine\Bundle\DoctrineBundle\Registry;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class CarFixtures extends Fixture
+class CarFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -30,6 +33,9 @@ class CarFixtures extends Fixture
             $currentBrand = rand(0,5);
             $carYear = rand(2000, 2017);
             $date = new \DateTime(($carYear+rand(0,3)).'-'.rand(1,12).'-'.rand(1,28));
+            $booked = false;
+            $dateCreation = new \DateTime('NOW');
+
 
             $car->setBrand($brand[$currentBrand])
                 ->setModel($brands[$currentBrand][rand(0, (count($brands[$currentBrand])-1))])
@@ -38,11 +44,21 @@ class CarFixtures extends Fixture
                 ->setPrice(rand(5000, 25000))
                 ->setLocation($locations[rand(0,5)])
                 ->setDateFirst($date)
-                ->setEngine($engines[rand(0,3)]);
+                ->setEngine($engines[rand(0,3)])
+                ->setBooked($booked)
+                ->setCreatedAt($dateCreation)
+                ->setOwner($this->getReference('jean.michel'));
 
             $manager->persist($car);
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            Usersfixtures::class,
+        ];
     }
 }
