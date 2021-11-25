@@ -1,0 +1,19 @@
+<div class="row">
+    {% set i = 1 %}
+    {% for model in models %}
+        {% if i % 5 == 1 and i <= 15 %}
+            <div id="conte">
+        {% endif %}
+        {% if i <= 15 %}
+            <a class="col" href="{{ path('research', {model: model}) }}">{{ model }}</a>
+        {% endif %}
+        {% if i % 5 == 0 and i < 15 %}
+            </div>
+        {% endif %}
+        {% set i = i + 1 %}
+    {% endfor %}
+    </div>
+	<div class="vali mt-3">
+		<a href="{{ path('research') }}">Tous les modèles</a>
+	</div>
+</div>

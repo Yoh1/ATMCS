@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}Bienvenue sur AutoMoinsChères !
 {% endblock %}
 
 {% block body %}
@@ -9,66 +9,69 @@
 			<div class="col-lg-6">
 				<h3>Top Marques</h3>
 				<hr>
-				<div class="row">
-					<div id="conte">
-						<a class="col" href="#">Audi</a>
-						<a class="col" href="#">BMW</a>
-						<a class="col" href="#">Citroen</a>
-						<a class="col" href="#">Peugeot</a>
-						<a class="col" href="#">Renault</a>
-					</div>
-					<div id="conte">
-						<a class="col" href="#">Fiat</a>
-						<a class="col" href="#">Ford</a>
-						<a class="col" href="#">Mercedes</a>
-						<a class="col" href="#">Toyota</a>
-						<a class="col" href="#">VW</a>
-					</div>
-					<div id="conte">
-						<a class="col" href="#">Mini</a>
-						<a class="col" href="#">Nissan</a>
-						<a class="col" href="#">Opel</a>
-						<a class="col" href="#">Abarth</a>
-						<a class="col" href="#">Jaguar</a>
-					</div>
-					<div class="vali">
-						<a href="#">Toutes les Marques</a>
-					</div>
-				</div>
+				{# <div class="row">
+																	<div id="conte">
+																		<a class="col" href="#">Audi</a>
+																		<a class="col" href="#">BMW</a>
+																		<a class="col" href="#">Citroen</a>
+																		<a class="col" href="#">Peugeot</a>
+																		<a class="col" href="#">Renault</a>
+																	</div>
+																	<div id="conte">
+																		<a class="col" href="#">Fiat</a>
+																		<a class="col" href="#">Ford</a>
+																		<a class="col" href="#">Mercedes</a>
+																		<a class="col" href="#">Toyota</a>
+																		<a class="col" href="#">VW</a>
+																	</div>
+																	<div id="conte">
+																		<a class="col" href="#">Mini</a>
+																		<a class="col" href="#">Nissan</a>
+																		<a class="col" href="#">Opel</a>
+																		<a class="col" href="#">Abarth</a>
+																		<a class="col" href="#">Jaguar</a>
+																	</div>
+																	<div class="vali">
+																		<a href="#">Toutes les Marques</a>
+																	</div>
+												
+																</div> #}
+				{% include 'home/_brands.html.twig' with {brands: brands} only %}
 			</div>
 			<div class="col-lg-6">
 				<h3>Top Modèles</h3>
 				<hr>
-				<div class="row">
-					<div id="conte1">
-						<a class="col" href="#">2008</a>
-						<a class="col" href="#">208</a>
-						<a class="col" href="#">3008</a>
-						<a class="col" href="#">308</a>
-					</div>
-					<div id="conte1">
-						<a class="col" href="#">500</a>
-						<a class="col" href="#">Cl</a>
-						<a class="col" href="#">Captur</a>
-						<a class="col" href="#">Clio</a>
-					</div>
-					<div id="conte1">
-						<a class="col" href="#">Golf</a>
-						<a class="col" href="#">Kadjar</a>
-						<a class="col" href="#">Megan</a>
-						<a class="col" href="#">Polo</a>
-					</div>
-					<div class="vali">
-						<a href="#">Tous les Modèles</a>
-					</div>
-				</div>
+				{# <div class="row">
+																	<div id="conte1">
+																		<a class="col" href="#">2008</a>
+																		<a class="col" href="#">208</a>
+																		<a class="col" href="#">3008</a>
+																		<a class="col" href="#">308</a>
+																	</div>
+																	<div id="conte1">
+																		<a class="col" href="#">500</a>
+																		<a class="col" href="#">Cl</a>
+																		<a class="col" href="#">Captur</a>
+																		<a class="col" href="#">Clio</a>
+																	</div>
+																	<div id="conte1">
+																		<a class="col" href="#">Golf</a>
+																		<a class="col" href="#">Kadjar</a>
+																		<a class="col" href="#">Megan</a>
+																		<a class="col" href="#">Polo</a>
+																	</div>
+																	<div class="vali">
+																		<a href="#">Tous les Modèles</a>
+																	</div>
+																</div> #}
+				{% include 'home/_models.html.twig' with {models: models} only %}
 			</div>
 		</div>
 		<div class="tete">
 			<h2>Annonce de voiture d'occasion
 				<span class="span">plusieurs marques</span>
 			</h2>
-			<p class="p1">Que vous soyez un particulier ou professionnel à la recherche d'une voiture d'occasion ou souhaitant en vendre une, de tourisme ou utilitaire, Diesel, Essence, Hybride ou encore Electrique.	Automoinscheres est une plateforme de mise en relation des vendeurs et des acheteurs, avec des possibilités d'y recontrer plusieurs choix de marques, et plusieurs conseils.</p>
+			<p class="p1">Que vous soyez un particulier ou professionnel à la recherche d'une voiture d'occasion ou souhaitant en vendre une, de tourisme ou utilitaire, Diesel, Essence, Hybride ou encore Electrique.	Automoinscheres est une plateforme de mise en relation des vendeurs et des acheteurs, avec des possibilités d'y recontré plusieurs choix de marques, différent conseils comme le financement.</p>
 		</div>
 		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-indicators">

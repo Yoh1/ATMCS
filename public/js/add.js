@@ -5,6 +5,7 @@ listInputs.style = 'color:red';
 
 
 let btn = document.getElementById('sub');
+let year = document.getElementById('form_year');
 
 
 
@@ -49,4 +50,12 @@ function formValid() {
         // inputElement.parentNode.lastElementChild.innerText = "";
 
     }
+
+    if (input.value.length <= 4 || input.value.length >= 4) {
+
+        year.innerHTML = 'Veuillez mettre au minimum et au maximum 4 chiffres';
+
+    }
+
+
 }

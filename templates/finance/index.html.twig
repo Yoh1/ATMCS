@@ -1,20 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FinanceController!{% endblock %}
+{% block title %}Finance
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="container mt-4 mb-3">
+		<h1>Financer sa voiture : tout savoir sur vos options de financement
+		</h1>
+		<p>Vous avez trouvé la voiture qui répond parfaitement à vos besoins ? Avec les solutions de financement exclusives Aramisauto, préservez intelligemment votre épargne et bénéficiez d’une solution personnalisée
+		</p>
+		<div class="row">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+			<div class="col-lg-6 d-flex flex-column align-items-center mt-3">
+				<h2>Crédit classique</h2>
+				<i class="bi bi-coin ico"></i>
+				<h3>Je veux</h3>
+				<ul>
+					<li>financer l'achat de ma voiture sans contrainte</li>
+					<li>bénéficier de taux négociés sans frais de dossier</li>
+					<li>des garanties en cas de coup dur</li>
+					<a href="{{ path('credit_classique') }}">Notre préconisation : Crédit classque</a>
+				</ul>
+			</div>
+			<div class="col-lg-6 d-flex flex-column align-items-center mt-3">
+				<h2>Location avec option d'achat</h2>
+				<i class="bi bi-bank2 ico "></i>
+				<h3>Je veux</h3>
+				<ul>
+					<li>une nouvelle voiture "quand je veux"</li>
+					<li>ne plus me soucier de la revente</li>
+					<li>"un château au prix d’un appartement"</li>
+					<a href="{{ path('location_achat') }}">Notre préconisation : Location avec option d'achat</a>
+				</ul>
+			</div>
+		</div>
+	</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/src/Controller/FinanceController.php'|file_link(0) }}">src/Controller/FinanceController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/templates/finance/index.html.twig'|file_link(0) }}">templates/finance/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}

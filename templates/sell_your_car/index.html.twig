@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vente  voitures
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container mb-5 mt-4">
+		<h1>Comment bien vendre sa voiture ?</h1>
+		<p>Pour bien vendre votre voiture d'occasion, établissez un prix de vente satisfaisant pour vous et juste par rapport au marché , Enfin pensez à présenter clairement et hônnetement votre véhicule, avec les papiers à disposition.</p>
+		<div class="row">
+			<div class="col">
+				<div class="accordion" id="accordionExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								1: À quel prix bien vendre son véhicule ?
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<p>Une bonne transaction se réalise au prix juste ! Ni trop haut, ni trop bas. Chacune des parties, vendeur et acheteur, doit réaliser une "bonne affaire". Un prix de vente idéal est déterminé par :</p>
+								<ul>
+									<li>-le prix de vente moyen des véhicules similaires au vôtre.
+									</li>
+									<li>-son kilométrage</li>
+									<li>-ses options.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								2 : Comment préparer sa voiture pour la vente ?
+							</button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<p>Ne masquez aucune information, mais présentez votre voiture d'occasion sous son plus beau jour.</p>
+								<ul>
+									<li>- Soignez la présentation avec un nettoyage intérieur/extérieur approfondi.</li>
+									<li>
+										Vérifiez la pression des pneus.</li>
+									<li>- Rangez-le et enlevez toute décoration personnelle.</li>
+									<li>- Prenez au moins 3 à 4 photos avant, arrière et l'habitacle.</li>
+									<li>- Passez le contrôle technique de votre véhicule s'il a plus de 4 ans, et un contrôle technique plus de 6 mois.</li>
+									<li>
+										{# <button type="button" class="btn btn-primary">Déposer une annonce</button> #}
+										<a href="{{ path('add') }}" class="btn btn-primary">Déposer une annonce</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								3: Comment préparer les essais de votre véhicule avec un futur acheteur ?
+							</button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<p>Faîtes preuve de prudence pour vos rencontres avec les acheteurs potentiels. Proposer l'essai de votre véhicule, mais :</p>
+								<ul>
+									<li>- Choisissez des lieux de rencontre animés et fréquentés.</li>
+									<li>- Soyez assuré pour l'essai.</li>
+									<li>
+										- Ne prêtez les clefs qu'une fois que vous êtes installé dans la voiture.</li>
+									<li>- Faites couper le contact et reprenez les clefs avant de descendre du véhicule.</li>
+									<li>- Présentez la carte grise, le contrôle technique, le carnet d'entretien et les dernières factures.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								4: Quels papiers pour conclure la vente ?
+							</button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<p>Voici les documents indispensables pour finaliser la vente de votre véhicule : La carte grise Une fois la vente finalisée et le paiement effectué, vous devez barrer votre carte grise. Inscrivez-y lisiblement la mention "vendue le ... à ... heures" et signer en dessous. Sur les cartes grises, le coin supérieur droit ou le bandeau en bas doit ètre découpé.Le certificat de situation
+																																																															Le certificat de situation administrative est un document qui garantit que le véhicule peut être vendu : véhicule non-gagé, n'a pas été volé, pas d'amendes impayées. Le certificat de situation remis au vendeur doit être daté de moins de 15 jours :</p>
+								<a href="https://siv.interieur.gouv.fr/map-usg-ui/do/accueil_certificat" target="_blank">
+									<button type="button" class="btn btn-primary">Demande de certificat de situation</button>
+								</a>
+								<p>Le certificat de cession</p>
+								<p>Fournir le code de cession obtenu en ligne lors de votre déclaration de cession sur le site de l'ANTS :</p>
+								<a href="https://ants.gouv.fr/monespace/s-inscrire.">https://ants.gouv.fr/monespace/s-inscrire.</a>
+								<a href="https://www.service-public.fr/simulateur/calcul/15776" target="_blank">
+									<br>
+									<button type="button" class="btn btn-primary">Télécharger le certificat de cession</button>
+								</a>
+								<p>Le contrôle technique</p>
+								<p>Le contrôle technique est obligatoire pour la vente d'un véhicule de plus de quatre ans. Il doit être effectué par un centre agréé (liste disponible dans toutes les préfectures). Vous devez impérativement remettre à votre acheteur le "rapport de contrôle", valable six mois.</p>
+								<p></p>
+
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								5: Comment vous faire payer en toute sécurité ?
+							</button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<p>Faîtes preuve de prudence pour vos rencontres avec les acheteurs potentiels. Proposer l'essai de votre véhicule, mais :</p>
+								<ul>
+									<li>- Le paiement en liquide n'est pas autorisé au-delà de 1 000 €.</li>
+									<li>- Le paiement par chèque de banque, était jusqu'ici le moyen le plus sécurisé, mais verifiez tout de même auprès de la banque émettrice qu'elle est bien à l'origine du chèque, pour éviter les faux.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								6 :Que faire après la vente de votre voiture ?
+							</button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<ul>
+									<li>- N'oubliez pas de transmettre un exemplaire du certificat de cession à la préfecture, ou bien de faire la déclaration en ligne
+										<a href="https://www.service-public.fr/particuliers/vosdroits/R41137">https://www.service-public.fr/particuliers/vosdroits/R41137</a>
+										. Vous avez 15 jours à compter du jour de la vente.
+																																																												- Pensez également à prévenir votre assurance pour résilier votre contrat.</li>
+
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>{% endblock %}

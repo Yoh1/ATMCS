@@ -1,20 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ResearchController!{% endblock %}
+{% block title %}Résultats de votre recherche{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/src/Controller/ResearchController.php'|file_link(0) }}">src/Controller/ResearchController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/kings/Desktop/symfony/Amtcs/templates/research/index.html.twig'|file_link(0) }}">templates/research/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+    <div class="container-fluid js-filter mt-3">
+        <div class="row">
+            <div class="col-md-3 sticky-top mt-3">
+                {% include 'research/_filter.html.twig' with {form: form, minPrice: minPrice, maxPrice: maxPrice} only %}
+            </div>
+
+        
+            <div class="col-md-9">
+                <div class="d-flex justify-content-end mb-2 js-filter-sorting">
+                    {% include 'research/_sorting.html.twig' with {cars: cars} only %}
+                </div>
+                <div class="js-filter-content">
+                    {% include 'research/_cars.html.twig' with {cars: cars} only %}
+                </div>
+            </div>
+        </div>
+         <div class="js-filter-pagination">
+            {% include 'research/_pagination.html.twig' with {cars: cars} only %}
+        </div>
+    </div>
+
+
+
+
 {% endblock %}

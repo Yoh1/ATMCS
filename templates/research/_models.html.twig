@@ -1,0 +1,29 @@
+    <h4>Modèles</h4>
+    <div class="overflow-auto" style="max-height: 200px">
+        {% set i = 0 %}
+        {% for child in models %}
+            {% if child.vars is defined %}        
+                {% if child.vars.value != '' %}
+                    {{ form_row(child, {'label': child.vars.value}) }}
+                {% else %}
+                    {{ form_row(child, {'label': 'Tous les modèles' }) }}
+                {% endif %}
+            {% else %}
+                {% if i == 0 %}
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input type="radio" id="model_placeholder" name="model" class="form-check-input new-models-form" value="">
+                            <label class="form-check-label" for="model_placeholder">Tous les modèles</label>
+                        </div>      
+                    </div>
+                {% endif %}
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input type="radio" id="model_{{i}}" name="model" class="form-check-input" value="{{child}}">
+                        <label class="form-check-label" for="model_{{i}}">{{child}}</label>
+                    </div>
+                </div>
+            {% endif %}
+            {% set i = i + 1 %}
+        {% endfor %}
+    </div>

@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vente  voitures{% endblock %}
+
+{% block body %}
+
+
+	<div class="container">
+		<h1>Acheteurs : L’achat de votre véhicule en période Coronavirus</h1>
+		<p>Lors de vos rencontres physiques avec de futurs acquéreurs, AutosMoinscheres vous recommande de suivre les recommandations sanitaires des autorités et vous propose quelques bonnes pratiques à suivre.</p>
+		<p>Si vous présentez des signes du virus, reportez votre rencontre et restez chez vous.</p>
+		<div class="row">
+			<div class="col">
+				<div class="accordion" id="accordionExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								1 : La préparation de la rencontre physique
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<p>Veillez à préparer votre rencontre avec l’acheteur potentiel, en convenant avec lui des mesures de sécurité comme :</p>
+								<ul>
+									<li>Port de d’un masque par les 2 parties</li>
+									<li>Avoir du gel désinfectant sur soi</li>
+									<li>Port de gants si vous le souhaitez</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								2 : L'essai
+							</button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<p>L’essai du véhicule est clé pour l’acheteur et doit être adapté pour assurer l’utilisation du véhicule dans les conditions de sécurité sanitaire optimales pour vous et pour lui.</p>
+								<p>Veillez à nettoyer votre véhicule avant de rencontrer l’acheteur avec une solution désinfectante en ciblant les points de contact :</p>
+								<ul>
+									<li>Poignées de porte (extérieures + intérieures)</li>
+									<li>Volant et commandes</li>
+									<li>Levier de vitesse et frein parking</li>
+									<li>Ecran tactile (attention à utiliser un tissu qui ne fasse pas de micro-rayures)</li>
+									<li>Clé du véhicule</li>
+									<li>Boite à gant</li>
+									<li>Cable/trappe de charge sur le véhicule est électrique</li>
+									<p>Lors de votre rencontre veillez à respecter les règles suivantes :</p>
+									<ul>
+										<li>Ne touchez pas les zones désinfectées</li>
+										<li>Respectez les gestes barrières et portez un masque</li>
+										<li>Privilégiez l’arrêt de la climatisation ou chauffage et roulez vitres ouvertes</li>
+										<li>Installez-vous à l’arrière du véhicule (côté opposé du conducteur)</li>
+										<li>Proposez au potentiel acheteur du gel hydroalcoolique s’il n’en a pas prévu</li>
+										<p>Après l’essai, nous vous invitons à :</p>
+										<ul>
+											<li>Désinfecter à nouveau les zones touchées du véhicule</li>
+											<li>Désinfecter les clés du véhicule</li>
+											<li>Bien vous laver les mains</li>
+										</ul>
+									</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								3: L'achat du véhicule
+							</button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<p>Munissez-vous de votre propre stylo et demandez également à l’acheteur potentiel d’utiliser son propre stylo pour signer les documents de la vente et rayer la carte grise.</p>
+								<p>Lavez-vous bien les mains suite à la manipulation des documents de vente et du chèque de banque.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+            <h2>les information utiles Covid 19</h2>
+            <img src="{{ '../img/covid.jpg' }}" alt="covid" class="picture rounded mx-auto d-block mt-2">
+		</div>
+
+	</div>
+{% endblock %}
