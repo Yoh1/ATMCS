@@ -19,9 +19,9 @@
 
 	<link rel="stylesheet" href="{{ '../css/annonce.css' }}">
 
-	<section id="article" class="row d-flex justify-content-evenly my-5">
+	<section id="article" class="row d-flex justify-content-evenly my-3">
 
-		<div id="div1" class="col-md-6">
+		<div id="div1" class="col-lg-6 text-center">
 			{% if annonces.picture %}
 				<img src="/uploads/cars_pictures/{{ annonces.picture }}" alt="{{annonces.brand}} - {{annonces.model}} - {{annonces.year}}">
 			{% else %}
@@ -29,9 +29,9 @@
 			{% endif %}
 		</div>
 
-		<div class="card m-3 col-md-5">
+		<div class="card mt-3 col-lg-5">
 			<div class="card-body">
-				<article class="mt-5">
+				<article>
 					<div id="div2" class="row text-center">
 						<h3 id="marque_modele">{{annonces.brand}}
 							{{annonces.model}}

@@ -7,6 +7,10 @@
 	<link rel="stylesheet" href="{{ '../css/form_annonce.css' }} ">
 {% endblock %}
 
+{% block javascript %}
+	{# // <script src="{{ '../js/add.js' }} "></script> #}
+{% endblock %}
+
 {% block title %}Ajouter une annonce
 {% endblock %}
 
@@ -111,6 +115,8 @@
 
 		{{ form_end(formAnnonce) }}
 	</div>
+
+	<script src="{{ '../js/add.js' }} "></script>
 
 
 {% endblock %}
