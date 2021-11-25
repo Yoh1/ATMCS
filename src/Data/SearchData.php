@@ -10,6 +10,11 @@ class SearchData {
      */
     public $q = '';
 
+    /**
+     * @var boolean
+     */
+    public $booked = false;
+
 
     /**
     *  @var string

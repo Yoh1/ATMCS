@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -35,6 +36,10 @@ class SearchForm extends AbstractType {
                     'placeholder' => "Rechercher une voiture",
                     'class' => "p-2"
                 ]
+            ])
+            ->add('booked', CheckboxType::class, [
+                'label' => FALSE,
+                'required' => FALSE,
             ])
             ->add('brand', ChoiceType::class, [
                 'required' => FALSE,

@@ -86,7 +86,7 @@ class CarRepository extends ServiceEntityRepository
      * @param [type] $data
      * @return array
      */
-    public function findBrands($data): array {
+    public function findBrands(SearchData $data): array {
 
         $query = $this->getSearchQuery($data)
                 ->select('c.brand')
@@ -221,6 +221,12 @@ class CarRepository extends ServiceEntityRepository
                         ->andWhere('c.brand LIKE :q')
                         ->orWhere('c.model LIKE :q')
                         ->setParameter('q', "%{$data->q}%");
+        }
+
+        if(!empty($data->booked)) {
+            $query = $query
+                        ->andWhere('c.booked LIKE :booked')
+                        ->setParameter('booked', 0);
         }
 
         if(!empty($data->minPrice) && $ignorePrice === false){
