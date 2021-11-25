@@ -48,6 +48,6 @@ class BookingController extends AbstractController
         $manager->persist($booking);
         $manager->flush();
 
-        return $this->redirectToRoute('research');
+        return $this->redirectToRoute('show_annonce', ['id' => $idCar]);
     }
 }
