@@ -6,6 +6,11 @@
                 <p class="card-text">{{ car.year }}</p>
                 <p class="card-text fw-bold text-muted">{{ car.mileage | number_format (0, ',', ' ')}} km <span class="text-dark text-uppercase">- {{ car.engine }}</span> </p>
                 <h5 class="card-title text-primary"> {{ car.price | number_format (0, ',', ' ')}} € <span class="text-dark">- {{ car.location }}</span> </h5>
+                {% for seller in sellers %}
+                    {% if car.owner.toInt == seller.id %}
+                        <p class="card-text">Vendeur : <span class="text-capitalize fw-bold">{{ seller.email|split('@')|slice(0, -1)|join }}</span></p>
+                    {% endif %}
+                {% endfor %}
             </class>
             <class class="col-md-3">
                 <a href="{{ path('show_annonce', {'id': car.id}) }}">
