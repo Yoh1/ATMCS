@@ -13,7 +13,9 @@
                         <h5><span class="text-uppercase">{{annonce.engine}}</span></h5>
                         <h4>Date de première circulation :
                                     {{annonce.dateFirst | date('d/m/Y')}}</h4>
-                        <p> <span class="fw-bold"> Description:</span> {{annonce.description}}</p>
+                        {% if annonce.description %}
+                            <p> <span class="fw-bold"> Description :</span> {{annonces.description}}</p>
+                        {% endif %}
                         {% if annonce.booked %}
                             <button class="btn-lg btn-secondary fw-bold text-white">Réservée</button>
                         {% endif %}

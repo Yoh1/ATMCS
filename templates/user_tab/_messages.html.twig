@@ -7,7 +7,13 @@
     {% for message in messageSent %}
         <div class="card m-3">
             <div class="card-body bg-light">
-                <h5 class="card-title">Destinataire : {{message.idReceiver}}</h5>
+                {% for user in users %}
+                    {% if user.id == message.idReceiver.toInt %}
+                        <h5 class="card-title">Destinataire : 
+                            <span class="text-capitalize fw-bold">{{user.email|split('@')|slice(0, -1)|join}}</span> - 
+                        {{message.sentAt|date('d/m/Y')}}</h5>
+                    {% endif %}
+                {% endfor %}
                 <div class="card-text">{{message.content}}</div>
             </div>
         </div>
@@ -22,7 +28,13 @@
     {% for message in messageReceived %}
         <div class="card m-3">
             <div class="card-body bg-light">
-                <h5 class="card-title">Expéditeur : {{message.idSender}}</h5>
+            {% for user in users %}
+                {% if user.id == message.idSender.toInt %}
+                    <h5 class="card-title">Expéditeur : 
+                        <span class="text-capitalize fw-bold">{{user.email|split('@')|slice(0, -1)|join}}</span> -
+                    {{message.sentAt|date('d/m/Y')}}</h5>
+                {% endif %}
+            {% endfor %}
                 <div class="card-text">{{message.content}}</div>
             </div>
         </div>

@@ -3,16 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\Car;
-use App\Entity\Booking;
-//use Doctrine\DBAL\Types\DateType;
 use DateTimeImmutable;
+//use Doctrine\DBAL\Types\DateType;
+use App\Entity\Booking;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\EntityManager;
-use Doctrine\Persistence\ObjectManager;
+use App\Repository\UsersRepository;
 
 // use Symfony\Component\HttpFoundation\Response;
 
 //use Doctrine\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -120,8 +121,10 @@ class AddController extends AbstractController
     /**
      * @Route("/annonce/{id}", name="show_annonce")
      */
-    public function showAnnonce($id)
+    public function showAnnonce($id, UsersRepository $sellersRepo)
     {
+        //List des vendeurs
+        $sellers = $sellersRepo->findAll();
 
         $repoCar = $this->getDoctrine()->getRepository(Car::class);
         $annonces = $repoCar->find($id);
@@ -134,7 +137,8 @@ class AddController extends AbstractController
         return $this->render('add/annonce.html.twig', [
             'controller_name' => 'AddController',
             'annonces' => $annonces,
-            'booked' => $booked
+            'booked' => $booked,
+            'sellers' => $sellers
 
         ]);
     }
