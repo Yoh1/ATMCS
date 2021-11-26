@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace de {{app.user.email|split('@')|slice(0, -1)|join }}{% endblock %}
+
+{% block body %}
+
+    <h2 class="text-center">Bienvenue sur votre espace personnel, <span class="text-capitalize fw-bold">{{app.user.email|split('@')|slice(0, -1)|join }}</span></h2>
+
+
+    <div class="container-fluid js-filter mt-3">
+        <div class="row">
+            <div class="col-md-3 sticky-top my-3 border">
+                <a href="{{ path('user_annonce', {'id': app.user.id}) }}">
+                    <button class="btn btn-lg btn-primary fw-bold text-white my-3">Vos annonces</button>
+                </a>
+                <a href="{{ path('user_messages', {'id': app.user.id}) }}">
+                    <button class="btn btn-lg btn-primary fw-bold text-white mb-3">Vos messages</button>
+                </a>
+                <a href="{{ path('user_bookings', {'id': app.user.id}) }}">
+                    <button class="btn btn-lg btn-primary fw-bold text-white mb-3">Vos réservations</button>
+                </a>
+            </div>
+
+        
+            <div class="col-md-9 mt-3">
+                {% block contenu %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

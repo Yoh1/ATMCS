@@ -203,6 +203,25 @@ class CarRepository extends ServiceEntityRepository
     }
 
     /**
+     * récupère les réservations d'un utilisation
+     */
+    public function findBookingsByUserId($idUser) {
+        
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT c
+            FROM App\Entity\Car c
+            INNER JOIN App\Entity\Booking b 
+            WHERE c.id = b.idCar
+            AND b.idUser = :idUser'
+        )->setParameter('idUser', $idUser);
+               
+        return $query->getScalarResult();
+
+    }
+
+    /**/
+
+    /**
      * fonction qui construit la requête de recherche
      *
      * @param SearchData $data

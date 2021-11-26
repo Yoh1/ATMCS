@@ -55,7 +55,7 @@ class BookingRepository extends ServiceEntityRepository
                 FROM App\Entity\Booking b
         ';
 
-        $query = $this->getEntityManager()->createQuery($dql)->getScalarResult();;
+        $query = $this->getEntityManager()->createQuery($dql)->getScalarResult();
                
         return array_column($query, "car_id");
 

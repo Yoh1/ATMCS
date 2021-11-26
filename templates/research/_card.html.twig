@@ -8,7 +8,7 @@
                 <h5 class="card-title text-primary"> {{ car.price | number_format (0, ',', ' ')}} € <span class="text-dark">- {{ car.location }}</span> </h5>
                 {% for seller in sellers %}
                     {% if car.owner.toInt == seller.id %}
-                        <p class="card-text">Vendeur : <span class="text-capitalize fw-bold">{{ seller.email|split('@')|slice(0, -1)|join }}</span></p>
+                        <p class="card-text">Contacter vendeur : <span class="text-capitalize fw-bold">{{ seller.email|split('@')|slice(0, -1)|join }}</span></p>
                     {% endif %}
                 {% endfor %}
             </class>

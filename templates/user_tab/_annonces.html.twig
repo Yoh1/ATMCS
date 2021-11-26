@@ -1,0 +1,25 @@
+{% extends './user_tab/index.html.twig'%}
+
+{% block contenu %}
+    <h3 class="ms-3">Vos annonces :</h3>
+    {% for annonce in annonces %}
+        <div class="card m-3">
+            <div class="card-body">
+                <article class="">
+                    <div id="" class="row text-center">
+                        <h3 id="marque_modele">{{annonce.brand}} {{annonce.model}} - {{annonce.year}}</h3>
+                        <h4>{{annonce.price | number_format(0, ",", " " )}}€ - {{annonce.mileage | number_format(0, ",", " " )}} km</h4>
+                        <h4>{{annonce.location}}</h4>
+                        <h5><span class="text-uppercase">{{annonce.engine}}</span></h5>
+                        <h4>Date de première circulation :
+                                    {{annonce.dateFirst | date('d/m/Y')}}</h4>
+                        <p> <span class="fw-bold"> Description:</span> {{annonce.description}}</p>
+                        {% if annonce.booked %}
+                            <button class="btn-lg btn-secondary fw-bold text-white">Réservée</button>
+                        {% endif %}
+                    </div>
+                </article>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
