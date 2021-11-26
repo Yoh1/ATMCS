@@ -22,18 +22,15 @@ function formValid() {
         p1.style.fontWeight = 'bold'
         input.parentElement.append(p1)
 
-        // input = false;
-        // inputElement.parentNode.lastElementChild.innerText = "";
-
         if ((input.value) == "") {
             p1.innerHTML = 'Veuillez remplire le champs vide';
 
-        }
-        console.log(year.value.length);
 
-        if (year.value.length != 4) {
-            year.parentNode.lastChild.innerHTML = 'Veuillez mettre au minimum et au maximum 4 chiffres';
+            if (year.value.length != 4) {
+                year.parentNode.lastChild.innerHTML = 'Veuillez mettre 4 chiffres obligatoire';
+            }
         }
+
     }
 
 }
