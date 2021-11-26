@@ -35,7 +35,13 @@
                             {{annonces.dateFirst | date('d/m/Y')}}</h4>
                         <p> {{annonces.description}}</p>
                         {% if annonces.booked == 1 %}
-                            <button class="btn-lg btn-secondary fw-bold text-white">Déjà réservée</button>
+                            {% if app.user.id == booked[0].idUser.toInt %}
+                                <a href="{{ path('unbooked', {'id': booked[0].id}) }}">
+                                    <button class="btn-lg btn-secondary fw-bold text-white">Annuler réservation</button>
+                                <a>
+                            {% else %}
+                                <button class="btn-lg btn-secondary fw-bold text-white">Déjà réservée</button>
+                            {% endif %}
                         {% else %}
                             {% if app.user %}
                                 <a href="{{ path('booked', {'idCar': annonces.id, 'idUser': app.user.id}) }}">

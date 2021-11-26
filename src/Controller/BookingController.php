@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Car;
 use App\Entity\Users;
 use App\Entity\Booking;
+use App\Repository\BookingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,5 +50,20 @@ class BookingController extends AbstractController
         $manager->flush();
 
         return $this->redirectToRoute('show_annonce', ['id' => $idCar]);
+    }
+
+    /**
+     * @Route("/unbook/{id}", name="unbooked")
+     */
+    public function unbook(EntityManagerInterface $manager, $id) {
+
+        //$repoBook->removeBooking($id);
+
+        $manager = $this->getDoctrine()->getManager();
+        $booking = $manager->getRepository(Booking::class)->find($id);
+        $manager->remove($booking);
+        $manager->flush();
+
+        return $this->redirectToRoute('research');
     }
 }

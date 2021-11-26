@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Car;
+use App\Entity\Booking;
 //use Doctrine\DBAL\Types\DateType;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping\Id;
@@ -122,14 +123,18 @@ class AddController extends AbstractController
     public function showAnnonce($id)
     {
 
-        $repo = $this->getDoctrine()->getRepository(Car::class);
+        $repoCar = $this->getDoctrine()->getRepository(Car::class);
+        $annonces = $repoCar->find($id);
 
-        $annonces = $repo->find($id);
+        $repoBooking = $this->getDoctrine()->getRepository(Booking::class);
+        $booked = $repoBooking->findBy(['idCar' => $id]);
 
+        //dd($booked);
 
         return $this->render('add/annonce.html.twig', [
             'controller_name' => 'AddController',
-            'annonces' => $annonces
+            'annonces' => $annonces,
+            'booked' => $booked
 
         ]);
     }
