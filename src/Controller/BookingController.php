@@ -61,7 +61,15 @@ class BookingController extends AbstractController
 
         $manager = $this->getDoctrine()->getManager();
         $booking = $manager->getRepository(Booking::class)->find($id);
+
+        $carId = $booking->getIdCar();
+
         $manager->remove($booking);
+        $manager->flush();
+
+        $unbookedCar = $manager->getRepository(Car::class)->find($carId);
+        $unbookedCar->setBooked(false);
+        $manager->persist($unbookedCar);
         $manager->flush();
 
         return $this->redirectToRoute('research');

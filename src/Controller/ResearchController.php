@@ -33,8 +33,6 @@ class ResearchController extends AbstractController
 
         //List des vendeurs
         $sellers = $sellersRepo->findAll();
-
-        //dd($sellers);
         
         $data = new SearchData();
         $data->page = $request->get('page', 1);
