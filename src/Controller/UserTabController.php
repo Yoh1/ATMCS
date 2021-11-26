@@ -6,6 +6,7 @@ use App\Entity\Car;
 use App\Entity\Booking;
 use App\Repository\BookingRepository;
 use App\Repository\CarRepository;
+use App\Repository\MessageRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -58,9 +59,16 @@ class UserTabController extends AbstractController
     /**
      * @Route("/usertab/{id}/messages", name="user_messages")
      */
-    public function showMessages(): Response {
+    public function showMessages($id, MessageRepository $repoMessage): Response {
+
+        $messageSent = $repoMessage->findBy(['idSender' => $id]);
+
+        $messageReceived = $repoMessage->findBy(['idReceiver' => $id]);
+
         return $this->render('user_tab/_messages.html.twig', [
             'controller_name' => 'UserTabController',
+            'messageSent' => $messageSent,
+            'messageReceived' => $messageReceived
         ]);
     }
 }

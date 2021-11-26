@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Envoyer un message{% endblock %}
+
+{% block body %}
+
+    <h2 class="text-center mt-3">Tapez votre message à <span class="text-capitalize fw-bold">{{receiver.email|split('@')|slice(0, -1)|join }}</span></h2>
+
+
+    <div class="container-fluid mt-3">
+        {{ form_start(formMessage) }}
+
+            {{ form_row(formMessage.content, {
+                'label': FALSE,
+                'attr': {
+                    'placeholder': "Veuillez taper le contenu de votre message",
+                    'required': TRUE,
+                    'rows': 10,
+                }
+            }) }}
+
+            <button type="submit" class="btn btn-lg btn-primary fw-bold text-white mb-3">Envoyer</button>
+            <a href="">
+                <button class="btn btn-lg btn-primary fw-bold text-white mb-3">Annuler</button>
+            </a>
+
+            {{ form_end(formMessage) }}
+    </div>
+{% endblock %}

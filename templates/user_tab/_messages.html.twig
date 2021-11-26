@@ -2,5 +2,34 @@
 
 {% block contenu %}
 
-    <p> rien</p>
+    <h4>Messages envoyés</h4>
+    {% set flagS = false %}
+    {% for message in messageSent %}
+        <div class="card m-3">
+            <div class="card-body bg-light">
+                <h5 class="card-title">Destinataire : {{message.idReceiver}}</h5>
+                <div class="card-text">{{message.content}}</div>
+            </div>
+        </div>
+        {% set flagS = true %}
+    {% endfor %}
+    {% if not flagS %}
+        <p>Aucun message envoyé !</p>
+    {% endif %}
+
+    {% set flagR = false %}
+    <h4>Messages reçus</h4>
+    {% for message in messageReceived %}
+        <div class="card m-3">
+            <div class="card-body bg-light">
+                <h5 class="card-title">Expéditeur : {{message.idSender}}</h5>
+                <div class="card-text">{{message.content}}</div>
+            </div>
+        </div>
+        {% set flagR = true %}
+    {% endfor %}
+    {% if not flagR %}
+        <p>Aucun message reçu !</p>
+    {% endif %}
+
 {% endblock %}
