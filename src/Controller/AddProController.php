@@ -108,7 +108,7 @@ class AddProController extends AbstractController
 
 
     /**
-     * @Route("/annonce/{id}", name="show_annonce")
+     * @Route("/annonce_pro/{id}", name="show_annonce_pro")
      */
     public function showAnnoncePro($id)
     {
