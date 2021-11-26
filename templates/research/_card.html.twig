@@ -17,8 +17,8 @@
                 {% if car.booked == 1 %}
                     {% if app.user %}
                         {% for booked in bookedCars %}
-                            {% if app.user.id == booked.idUser.toInt and not flag %}
-                                <button class="btn-lg btn-secondary fw-bold text-white">Annuler réservation</button>
+                            {% if app.user.id == booked.idUser.toInt and booked.idCar.toInt == car.id and not flag %}
+                                <button class="btn-lg btn-secondary fw-bold text-white">Annuler</button>
                                 {% set flag = true %}
                             {% endif %}
                         {% endfor %}

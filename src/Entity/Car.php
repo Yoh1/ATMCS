@@ -246,6 +246,11 @@ class Car
 
     public function __toString()
     {
-        return (string) $this->owner;
+        return (string) $this->id;
+    }
+
+    public function toInt()
+    {
+        return (int) $this->__toString();
     }
 }
