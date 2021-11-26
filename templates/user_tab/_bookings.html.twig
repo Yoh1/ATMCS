@@ -4,7 +4,7 @@
     <h3 class="ms-3">Vos réservations :</h3>
     {% for booking in bookings %}
         <div class="card m-3">
-            <div class="card-body">
+            <div class="card-body bg-light">
                 <article class="">
                     <div id="" class="row text-center">
                         <h3 id="marque_modele">{{booking.c_brand}} {{booking.c_model}} - {{booking.c_year}}</h3>
@@ -13,7 +13,9 @@
                         <h5><span class="text-uppercase">{{booking.c_engine}}</span></h5>
                         <h4>Date de première circulation :
                                     {{booking.c_dateFirst | date('d/m/Y')}}</h4>
-                        <p> <span class="fw-bold"> Description:</span> {{booking.c_description}}</p>
+                        {% if booking.c_description %}
+                            <p> <span class="fw-bold"> Description:</span> {{booking.c_description}}</p>
+                        {% endif %}
                         {% set flag = false %}
                         {% if booking.c_booked %}
                             {% for booked in bookingList %}
