@@ -28,26 +28,28 @@ class CarFixtures extends Fixture implements DependentFixtureInterface
         $locations = array("Paris", "Melun", "Evry", "Montgeron", "Juvisy", "Corbeil");
         $engines = array("essence", "diesel", "hybride", "électrique");
 
-        for($i = 0; $i < 100; $i++){
+        for ($i = 0; $i < 100; $i++) {
             $car = new Car();
-            $currentBrand = rand(0,5);
+            $currentBrand = rand(0, 5);
             $carYear = rand(2000, 2017);
-            $date = new \DateTime(($carYear+rand(0,3)).'-'.rand(1,12).'-'.rand(1,28));
+            $date = new \DateTime(($carYear + rand(0, 3)) . '-' . rand(1, 12) . '-' . rand(1, 28));
             $booked = false;
+            $status = false;
             $dateCreation = new \DateTime('NOW');
 
 
             $car->setBrand($brand[$currentBrand])
-                ->setModel($brands[$currentBrand][rand(0, (count($brands[$currentBrand])-1))])
+                ->setModel($brands[$currentBrand][rand(0, (count($brands[$currentBrand]) - 1))])
                 ->setYear($carYear)
                 ->setMileage(rand(10000, 250000))
                 ->setPrice(rand(5000, 25000))
-                ->setLocation($locations[rand(0,5)])
+                ->setLocation($locations[rand(0, 5)])
                 ->setDateFirst($date)
-                ->setEngine($engines[rand(0,3)])
+                ->setEngine($engines[rand(0, 3)])
                 ->setBooked($booked)
                 ->setCreatedAt($dateCreation)
-                ->setOwner($this->getReference('jean.michel'));
+                ->setOwner($this->getReference('jean.michel'))
+                ->setStatus($status);
 
             $manager->persist($car);
         }

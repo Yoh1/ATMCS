@@ -18,13 +18,13 @@ class Message
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Users::class)
+     * @ORM\ManyToOne(targetEntity=Users::class, cascade={"remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $idSender;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Users::class)
+     * @ORM\ManyToOne(targetEntity=Users::class, cascade={"remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $idReceiver;

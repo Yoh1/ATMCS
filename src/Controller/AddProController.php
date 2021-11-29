@@ -37,7 +37,7 @@ class AddProController extends AbstractController
         $annonce = new Car();
 
         $form = $this->createFormBuilder($annonce)
-            // ->add('name')
+            //->add('name')
             ->add('brand')
             ->add('model')
             ->add('year')
@@ -94,6 +94,15 @@ class AddProController extends AbstractController
 
                 $annonce->setPicture($newFilename);
             }
+
+            //réservée non par défaut
+            $annonce->setBooked(0);
+            //date de création de l'annonce
+            $annonce->setCreatedAt(new \DateTimeImmutable());
+            //propriétaire de l'annonce
+            $annonce->setOwner($this->getUser());
+            //status pro
+            $annonce->setStatus(true);
 
             $manager->persist($annonce);
             $manager->flush();

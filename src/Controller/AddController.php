@@ -105,6 +105,8 @@ class AddController extends AbstractController
             //propriétaire de l'annonce
             $annonce->setOwner($this->getUser());
 
+            $annonce->setStatus(true);
+
             $manager->persist($annonce);
             $manager->flush();
 

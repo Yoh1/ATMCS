@@ -83,6 +83,11 @@ class Car
      */
     private $owner;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $status;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -252,5 +257,17 @@ class Car
     public function toInt()
     {
         return (int) $this->__toString();
+    }
+
+    public function getStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): self
+    {
+        $this->status = $status;
+
+        return $this;
     }
 }

@@ -24,7 +24,7 @@ class Booking
     private $idUser;
 
     /**
-     * @ORM\OneToOne(targetEntity=Car::class)
+     * @ORM\OneToOne(targetEntity=Car::class, cascade={"remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $idCar;
