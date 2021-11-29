@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\CarRepository;
+use App\Entity\Users;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CarRepository;
 
 /**
  * @ORM\Entity(repositoryClass=CarRepository::class)
