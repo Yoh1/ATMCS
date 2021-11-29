@@ -13,8 +13,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Menu\MenuInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-
-
 class DashboardController extends AbstractDashboardController 
 {
     /**
