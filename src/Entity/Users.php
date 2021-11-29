@@ -50,7 +50,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $bookings;
 
     /**
-     * @ORM\OneToMany(targetEntity=Car::class, mappedBy="owner")
+     * @ORM\OneToMany(targetEntity=Car::class, mappedBy="owner",cascade={"remove"})
      */
     private $cars;
 
