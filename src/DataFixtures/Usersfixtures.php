@@ -2,15 +2,23 @@
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
+use App\Entity\Users;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class Usersfixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
+        $user = new Users();
+        
+        $user->setEmail("jean.michel.defaut@rien.org")
+            ->setRoles(['USER'])
+            ->setPassword('coucou')
+            ->setIsVerified('1');
+
+        $manager->persist($user);
+        $this->addReference('jean.michel', $user);
 
         $manager->flush();
     }

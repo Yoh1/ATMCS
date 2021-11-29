@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Car;
 use App\Entity\Users;
 use App\Entity\Booking;
+use App\Repository\BookingRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BookingController extends AbstractController
 {
     /**
-     * @Route("/booking", name="booking")
+     * @Route("/book", name="booking")
      */
     public function index(): Response
     {
@@ -26,12 +28,14 @@ class BookingController extends AbstractController
     /**
      * Réserver une voiture
      *
-     * @Route("{idCar}+{idUser}", name="booked")
+     * @Route("/booking/{idCar}+{idUser}", name="booked")
      */
     public function bookingCar(EntityManagerInterface $manager, $idCar, $idUser) {
 
         $repoCar = $this->getDoctrine()->getRepository(Car::class);
         $bookedCar = $repoCar->find($idCar);
+
+        $bookedCar->setBooked(true);
         
         $repoUser = $this->getDoctrine()->getRepository(Users::class);
         $bookingUser = $repoUser->find($idUser);
@@ -43,6 +47,29 @@ class BookingController extends AbstractController
                 ->setBookedAt(new \DateTimeImmutable());
 
         $manager->persist($booking);
+        $manager->flush();
+
+        return $this->redirectToRoute('show_annonce', ['id' => $idCar]);
+    }
+
+    /**
+     * @Route("/unbook/{id}", name="unbooked")
+     */
+    public function unbook(EntityManagerInterface $manager, $id) {
+
+        //$repoBook->removeBooking($id);
+
+        $manager = $this->getDoctrine()->getManager();
+        $booking = $manager->getRepository(Booking::class)->find($id);
+
+        $carId = $booking->getIdCar();
+
+        $manager->remove($booking);
+        $manager->flush();
+
+        $unbookedCar = $manager->getRepository(Car::class)->find($carId);
+        $unbookedCar->setBooked(false);
+        $manager->persist($unbookedCar);
         $manager->flush();
 
         return $this->redirectToRoute('research');

@@ -1,0 +1,47 @@
+{% extends './user_tab/index.html.twig'%}
+
+{% block contenu %}
+
+    <h4>Messages envoyés</h4>
+    {% set flagS = false %}
+    {% for message in messageSent %}
+        <div class="card m-3">
+            <div class="card-body bg-light">
+                {% for user in users %}
+                    {% if user.id == message.idReceiver.toInt %}
+                        <h5 class="card-title">Destinataire : 
+                            <span class="text-capitalize fw-bold">{{user.email|split('@')|slice(0, -1)|join}}</span> - 
+                        {{message.sentAt|date('d/m/Y')}}</h5>
+                    {% endif %}
+                {% endfor %}
+                <div class="card-text">{{message.content}}</div>
+            </div>
+        </div>
+        {% set flagS = true %}
+    {% endfor %}
+    {% if not flagS %}
+        <p>Aucun message envoyé !</p>
+    {% endif %}
+
+    {% set flagR = false %}
+    <h4>Messages reçus</h4>
+    {% for message in messageReceived %}
+        <div class="card m-3">
+            <div class="card-body bg-light">
+            {% for user in users %}
+                {% if user.id == message.idSender.toInt %}
+                    <h5 class="card-title">Expéditeur : 
+                        <span class="text-capitalize fw-bold">{{user.email|split('@')|slice(0, -1)|join}}</span> -
+                    {{message.sentAt|date('d/m/Y')}}</h5>
+                {% endif %}
+            {% endfor %}
+                <div class="card-text">{{message.content}}</div>
+            </div>
+        </div>
+        {% set flagR = true %}
+    {% endfor %}
+    {% if not flagR %}
+        <p>Aucun message reçu !</p>
+    {% endif %}
+
+{% endblock %}

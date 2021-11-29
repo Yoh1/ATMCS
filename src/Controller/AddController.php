@@ -3,26 +3,29 @@
 namespace App\Controller;
 
 use App\Entity\Car;
+use DateTimeImmutable;
 //use Doctrine\DBAL\Types\DateType;
+use App\Entity\Booking;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\EntityManager;
-use Doctrine\Persistence\ObjectManager;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\UsersRepository;
 
 // use Symfony\Component\HttpFoundation\Response;
 
 //use Doctrine\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\String\Slugger\SluggerInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class AddController extends AbstractController
 {
@@ -61,7 +64,7 @@ class AddController extends AbstractController
                     ])
                 ]
             ])
-            //->add('description')
+            ->add('description')
             ->getForm();
 
 
@@ -95,6 +98,13 @@ class AddController extends AbstractController
 
             }
 
+            //réservée non par défaut
+            $annonce->setBooked(0);
+            //date de création de l'annonce
+            $annonce->setCreatedAt(new \DateTimeImmutable());
+            //propriétaire de l'annonce
+            $annonce->setOwner($this->getUser());
+
             $manager->persist($annonce);
             $manager->flush();
 
@@ -111,17 +121,24 @@ class AddController extends AbstractController
     /**
      * @Route("/annonce/{id}", name="show_annonce")
      */
-    public function showAnnonce($id)
+    public function showAnnonce($id, UsersRepository $sellersRepo)
     {
+        //List des vendeurs
+        $sellers = $sellersRepo->findAll();
 
-        $repo = $this->getDoctrine()->getRepository(Car::class);
+        $repoCar = $this->getDoctrine()->getRepository(Car::class);
+        $annonces = $repoCar->find($id);
 
-        $annonces = $repo->find($id);
+        $repoBooking = $this->getDoctrine()->getRepository(Booking::class);
+        $booked = $repoBooking->findBy(['idCar' => $id]);
 
+        //dd($booked);
 
         return $this->render('add/annonce.html.twig', [
             'controller_name' => 'AddController',
-            'annonces' => $annonces
+            'annonces' => $annonces,
+            'booked' => $booked,
+            'sellers' => $sellers
 
         ]);
     }

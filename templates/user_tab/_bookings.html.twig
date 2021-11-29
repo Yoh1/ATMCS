@@ -1,0 +1,35 @@
+{% extends './user_tab/index.html.twig'%}
+
+{% block contenu %}
+    <h3 class="ms-3">Vos réservations :</h3>
+    {% for booking in bookings %}
+        <div class="card m-3">
+            <div class="card-body bg-light">
+                <article class="">
+                    <div id="" class="row text-center">
+                        <h3 id="marque_modele">{{booking.c_brand}} {{booking.c_model}} - {{booking.c_year}}</h3>
+                        <h4>{{booking.c_price | number_format(0, ",", " " )}}€ - {{booking.c_mileage | number_format(0, ",", " " )}} km</h4>
+                        <h4>{{booking.c_location}}</h4>
+                        <h5><span class="text-uppercase">{{booking.c_engine}}</span></h5>
+                        <h4>Date de première circulation :
+                                    {{booking.c_dateFirst | date('d/m/Y')}}</h4>
+                        {% if booking.c_description %}
+                            <p> <span class="fw-bold"> Description:</span> {{booking.c_description}}</p>
+                        {% endif %}
+                        {% set flag = false %}
+                        {% if booking.c_booked %}
+                            {% for booked in bookingList %}
+                                {% if not flag %}
+                                    <a href="{{ path('unbooked', {'id': booked.id }) }}">
+                                        <button class="btn-lg btn-secondary fw-bold text-white">Annuler réservation</button>
+                                    </a>
+                                {% endif %}
+                                {% set flag = true %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </article>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

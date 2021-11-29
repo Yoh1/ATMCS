@@ -1,29 +1,54 @@
 <div class="card m-3">
-    <div class="card-body">
+    <div class="card-body bg-light">
         <h4 class="card-title">{{ car.brand }} {{ car.model }}</h5>
         <class class="row">
             <class class="col-md-9">
                 <p class="card-text">{{ car.year }}</p>
                 <p class="card-text fw-bold text-muted">{{ car.mileage | number_format (0, ',', ' ')}} km <span class="text-dark text-uppercase">- {{ car.engine }}</span> </p>
                 <h5 class="card-title text-primary"> {{ car.price | number_format (0, ',', ' ')}} € <span class="text-dark">- {{ car.location }}</span> </h5>
+                {% if app.user %}
+                    {% for seller in sellers %}
+                        {% if car.owner.toInt == seller.id %}
+                            <p class="card-text">Contacter vendeur : 
+                                {% if app.user.id == seller.id %}
+                                    <span class="text-capitalize fw-bold">{{ seller.email|split('@')|slice(0, -1)|join }}</span>
+                                {% else %}
+                                <a href="{{ path('message', {'idSender': app.user.id, 'idReceiver': seller.id })}}">
+                                    <span class="text-capitalize fw-bold">{{ seller.email|split('@')|slice(0, -1)|join }}</span>
+                                </a>
+                                {% endif %}
+                            </p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </class>
             <class class="col-md-3">
                 <a href="{{ path('show_annonce', {'id': car.id}) }}">
                     <button class="btn-lg btn-primary fw-bold text-white mb-3">Voir détails</button>
                 </a>
-                {% set flag = false %}
-                {% for bookedCar in bookedCars %}
-                    {% if bookedCar == car.id %}
-                        {% set flag = true %}
-                    {% endif %}
-                {% endfor %}
 
-                {% if flag  %}
-                    <button class="btn-lg btn-secondary fw-bold text-white">Déjà réservée</button>
+
+                {% set flag = false %}
+                {% if car.booked == 1 %}
+                    {% if app.user %}
+                        {% for booked in bookedCars %}
+                            {% if app.user.id == booked.idUser.toInt and booked.idCar.toInt == car.id and not flag %}
+                                <a href="{{ path('unbooked', {'id': booked.id}) }}">
+                                    <button class="btn-lg btn-secondary fw-bold text-white">Annuler</button>
+                                </a>
+                                {% set flag = true %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if not flag %}
+                        <button class="btn-lg btn-secondary fw-bold text-white">Déjà réservée</button>
+                    {% endif %}
                 {% else %}
-                    <a href="{{ path('booked', {'idCar': car.id, 'idUser': app.user.id}) }}">
-                        <button class="btn-lg btn-warning fw-bold text-white">Réserver</button>
-                    </a>
+                    {% if app.user %}
+                        <a href="{{ path('booked', {'idCar': car.id, 'idUser': app.user.id}) }}">
+                            <button class="btn-lg btn-warning fw-bold text-white">Réserver</button>
+                        </a>
+                    {% endif %}
                 {% endif %}
 
             </class>

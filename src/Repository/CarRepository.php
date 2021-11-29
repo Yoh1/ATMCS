@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Car;
+use App\Entity\Booking;
 use App\Data\SearchData;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -79,7 +80,13 @@ class CarRepository extends ServiceEntityRepository
         );
     }
 
-    public function findBrands($data): array {
+    /**
+     * récupère la liste de toutes les marques
+     *
+     * @param [type] $data
+     * @return array
+     */
+    public function findBrands(SearchData $data): array {
 
         $query = $this->getSearchQuery($data)
                 ->select('c.brand')
@@ -95,6 +102,12 @@ class CarRepository extends ServiceEntityRepository
     SELECT brand, count(brand) FROM `car` GROUP BY brand
     pour récuper le nombre de marques en même temps */
 
+    /**
+     * récupère la liste de tous les modèles
+     *
+     * @param SearchData $data
+     * @return array
+     */
     public function findModels(SearchData $data): array {
 
         $query = $this->getSearchQuery($data)
@@ -107,6 +120,12 @@ class CarRepository extends ServiceEntityRepository
         return array_column($query, "model");
     }
 
+    /**
+     * récupère la liste de toutes les localisations
+     *
+     * @param SearchData $data
+     * @return array
+     */
     public function findLocations(SearchData $data): array {
 
         $query = $this->getSearchQuery($data)
@@ -119,6 +138,12 @@ class CarRepository extends ServiceEntityRepository
         return array_column($query, "location");
     }
 
+    /**
+     * recupère la liste de toutes les motorisations
+     *
+     * @param SearchData $data
+     * @return array
+     */
     public function findEngines(SearchData $data): array {
 
         $query = $this->getSearchQuery($data)
@@ -130,6 +155,7 @@ class CarRepository extends ServiceEntityRepository
 
         return array_column($query, "engine");
     }
+
 
     /**
      * récupère les prix minimums et maximums
@@ -176,6 +202,32 @@ class CarRepository extends ServiceEntityRepository
         return array_column($query, "model");
     }
 
+    /**
+     * récupère les réservations d'un utilisation
+     */
+    public function findBookingsByUserId($idUser) {
+        
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT c
+            FROM App\Entity\Car c
+            INNER JOIN App\Entity\Booking b 
+            WHERE c.id = b.idCar
+            AND b.idUser = :idUser'
+        )->setParameter('idUser', $idUser);
+               
+        return $query->getScalarResult();
+
+    }
+
+    /**/
+
+    /**
+     * fonction qui construit la requête de recherche
+     *
+     * @param SearchData $data
+     * @param boolean $ignorePrice
+     * @return QueryBuilder
+     */
     private function getSearchQuery(SearchData $data, $ignorePrice = false) : QueryBuilder{
 
         $query = $this
@@ -188,6 +240,12 @@ class CarRepository extends ServiceEntityRepository
                         ->andWhere('c.brand LIKE :q')
                         ->orWhere('c.model LIKE :q')
                         ->setParameter('q', "%{$data->q}%");
+        }
+
+        if(!empty($data->booked)) {
+            $query = $query
+                        ->andWhere('c.booked LIKE :booked')
+                        ->setParameter('booked', 0);
         }
 
         if(!empty($data->minPrice) && $ignorePrice === false){
