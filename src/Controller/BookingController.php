@@ -72,9 +72,9 @@ class BookingController extends AbstractController
 
 
         $manager->persist($unbookedCar);
-        //$manager->flush();
+        $manager->flush();
 
-        //$manager->remove($booking);
+        $manager->remove($booking);
         $manager->flush();
 
         return $this->redirectToRoute('research');

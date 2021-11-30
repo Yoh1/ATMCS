@@ -79,7 +79,7 @@ class Car
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="cars",cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="cars")
      * @ORM\JoinColumn(nullable=false)
      */
     private $owner;
